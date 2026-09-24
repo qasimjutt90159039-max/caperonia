@@ -1,0 +1,62 @@
+{
+  "general": {
+    "search": {
+      "search": "Search",
+      "heading": "Search catalog",
+      "no_results": "No products found",
+      "view_all": "View all results"
+    },
+    "continue_shopping": "Continue Shopping",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {{ number }}"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "on_sale": "Sale",
+      "quantity": "Quantity",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "unit_price_separator": "per",
+      "value_unavailable": "{{ value }} - Unavailable"
+    }
+  },
+  "sections": {
+    "cart": {
+      "title": "Shopping Cart",
+      "empty": "Your cart is empty",
+      "subtotal": "Subtotal",
+      "checkout": "Proceed to Checkout",
+      "note": "Special delivery instructions"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Customer Account",
+      "details": "Account Details",
+      "view_addresses": "Manage Addresses",
+      "return": "Return to Account Details"
+    },
+    "login_page": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "forgot_password": "Forgot your password?",
+      "sign_in": "Sign In",
+      "create_account": "Create account"
+    },
+    "orders": {
+      "title": "Order History",
+      "order_number": "Order",
+      "date": "Date",
+      "payment_status": "Payment Status",
+      "fulfillment_status": "Fulfillment Status",
+      "total": "Total",
+      "none": "You haven't placed any furniture orders yet."
+    }
+  }
+}

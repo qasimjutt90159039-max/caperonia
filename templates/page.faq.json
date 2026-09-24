@@ -1,0 +1,80 @@
+{
+  "name": "FAQ Page",
+  "sections": {
+    "main": {
+      "type": "main-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I place an order?",
+            "answer": "<p>Select your desired furniture or interior pieces, choose variants (such as finish or size), and click 'Add to Cart'. When you are ready, proceed to our secure Shopify checkout to enter your contact, delivery, and payment information.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I check furniture dimensions?",
+            "answer": "<p>Each product detail page contains an exact 'Dimensions & Product Details' section displaying the Width, Height, Depth, and Weight configured for that piece. Please measure your room and doorway clearances before ordering.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are furniture colors and finishes customizable?",
+            "answer": "<p>Many of our furniture items can be customized in terms of wood polish, fabric type, or upholstery color. Please contact our team at +92 300 9630392 or visit our Multan showroom to discuss custom orders.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I check product availability?",
+            "answer": "<p>Real-time stock and availability are indicated directly on each product card and product details page. If an item displays 'Sold Out', you may reach out to inquire about lead times for made-to-order production.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer delivery?",
+            "answer": "<p>Delivery arrangements, areas served, and shipping rates are managed through Shopify checkout and can be confirmed with our team depending on order destination and furniture size.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer installation?",
+            "answer": "<p>Installation and on-site assembly depend on the specific product and delivery destination. Please inquire with our Multan store team at the time of your order for availability and arrangements.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>Please review our official Return & Refund Policy page for full details regarding returns, inspection on delivery, and exchange guidelines.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I contact Caperino Furnitures & Interiors?",
+            "answer": "<p>You can call or WhatsApp us at +92 300 9630392, submit a message via our Contact page, or visit our showroom at Main Vehari Road, near Chungi No. 22, Timber Market, Multan, Punjab, Pakistan.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

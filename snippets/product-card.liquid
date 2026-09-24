@@ -1,0 +1,109 @@
+{%- comment -%}
+  Renders a luxury furniture product card
+  Usage:
+  {% render 'product-card', product_card_product: product %}
+{%- endcomment -%}
+
+{%- liquid
+  assign product = product_card_product
+  assign first_image = product.featured_media.preview_image
+  assign second_image = product.media[1].preview_image | default: first_image
+  assign current_variant = product.selected_or_first_available_variant
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+-%}
+
+<div class="product-card" data-product-id="{{ product.id }}">
+  <div class="product-card-image-wrap">
+    <a href="{{ product.url }}" class="product-card-link-overlay" aria-label="{{ product.title | escape }}"></a>
+
+    {%- if first_image != blank -%}
+      <img
+        src="{{ first_image | image_url: width: 600 }}"
+        alt="{{ first_image.alt | default: product.title | escape }}"
+        loading="lazy"
+        width="600"
+        height="600"
+        class="product-card-img primary-img"
+      >
+      {%- if product.media.size > 1 -%}
+        <img
+          src="{{ second_image | image_url: width: 600 }}"
+          alt="{{ second_image.alt | default: product.title | escape }}"
+          loading="lazy"
+          width="600"
+          height="600"
+          class="product-card-img secondary-img"
+        >
+      {%- endif -%}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'product-card-img primary-img' }}
+    {%- endif -%}
+
+    {%- if on_sale -%}
+      <span class="product-badge badge-sale">Sale</span>
+    {%- elsif product.tags contains 'New' or product.tags contains 'new-arrival' -%}
+      <span class="product-badge badge-new">New</span>
+    {%- endif -%}
+
+    <div class="product-card-actions">
+      <button
+        type="button"
+        class="wishlist-btn-card"
+        data-product-id="{{ product.id }}"
+        data-variant-id="{{ current_variant.id }}"
+        data-product-title="{{ product.title | escape }}"
+        data-product-price="{{ product.price | money }}"
+        data-product-image="{{ first_image | image_url: width: 400 }}"
+        data-product-url="{{ product.url }}"
+        data-product-vendor="{{ product.vendor | escape }}"
+        aria-label="Add to wishlist"
+      >
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="product-card-bottom-actions">
+      <button
+        type="button"
+        class="btn-card-quickview"
+        data-quickview-handle="{{ product.handle }}"
+        aria-label="Quick View {{ product.title | escape }}"
+      >
+        Quick View
+      </button>
+
+      {%- if product.available -%}
+        <button
+          type="button"
+          class="btn-card-addtocart"
+          onclick="window.addToCart({{ current_variant.id }}, 1)"
+          aria-label="Add to cart {{ product.title | escape }}"
+        >
+          Add to Cart
+        </button>
+      {%- else -%}
+        <button type="button" class="btn-card-addtocart" disabled style="opacity: 0.6; cursor: not-allowed;">
+          Sold Out
+        </button>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="product-card-info">
+    <div class="product-card-vendor">{{ product.vendor | default: 'Caperino Furnitures & Interiors' }}</div>
+    <h3 class="product-card-title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+    <div class="product-card-price-wrap">
+      {% render 'price', product: product %}
+    </div>
+    {%- if product.metafields.custom.material != blank -%}
+      <div class="product-card-meta">{{ product.metafields.custom.material }}</div>
+    {%- endif -%}
+  </div>
+</div>

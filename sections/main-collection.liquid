@@ -1,0 +1,132 @@
+{%- paginate collection.products by 12 -%}
+<div class="container section-spacing-sm">
+  <!-- Collection Header -->
+  <div class="collection-header text-center" style="max-width: 760px; margin: 0 auto clamp(2rem, 4vw, 3rem);">
+    <span class="section-eyebrow">Collection</span>
+    <h1 style="font-size: clamp(2.4rem, 4.5vw, 3.5rem); margin-bottom: 0.75rem;">{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}
+      <div style="color: var(--color-text-muted); font-size: 1.05rem; line-height: 1.6;">
+        {{ collection.description }}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <!-- Collection Toolbar: Count & Sort -->
+  <div class="collection-toolbar">
+    <div class="collection-count">
+      Showing {{ collection.products_count }} {% if collection.products_count == 1 %}piece{% else %}pieces{% endif %}
+    </div>
+
+    <div class="collection-sort-wrap">
+      <label for="SortBy" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Sort By:</label>
+      <select id="SortBy" name="sort_by" class="sort-select" onchange="location.href = window.location.pathname + '?' + new URLSearchParams(Object.assign(Object.fromEntries(new URLSearchParams(window.location.search)), {sort_by: this.value})).toString()">
+        <option value="manual" {% if collection.sort_by == 'manual' %}selected{% endif %}>Featured</option>
+        <option value="best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
+        <option value="title-ascending" {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>Alphabetically, A-Z</option>
+        <option value="title-descending" {% if collection.sort_by == 'title-descending' %}selected{% endif %}>Alphabetically, Z-A</option>
+        <option value="price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Price, Low to High</option>
+        <option value="price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Price, High to Low</option>
+        <option value="created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>Newest Arrivals</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Layout: Sidebar Filters + Product Grid -->
+  <div class="collection-layout-sidebar">
+    <!-- Sidebar Filters -->
+    <aside class="collection-filters-aside" aria-label="Filters">
+      <form id="CollectionFiltersForm" method="get">
+        <input type="hidden" name="sort_by" value="{{ collection.sort_by | default: collection.default_sort_by }}">
+
+        {%- if collection.filters.size > 0 -%}
+          {%- for filter in collection.filters -%}
+            <div class="filter-group">
+              <h3 class="filter-heading">{{ filter.label }}</h3>
+              <ul class="filter-options-list">
+                {%- for filter_value in filter.values -%}
+                  <li>
+                    <label class="filter-checkbox-label">
+                      <input
+                        type="checkbox"
+                        name="{{ filter_value.param_name }}"
+                        value="{{ filter_value.value }}"
+                        id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                        {% if filter_value.active %}checked{% endif %}
+                        {% if filter_value.count == 0 and filter_value.active == false %}disabled{% endif %}
+                        onchange="document.getElementById('CollectionFiltersForm').submit()"
+                      >
+                      <span>{{ filter_value.label }}</span>
+                      <span style="color: var(--color-text-light); font-size: 0.75rem;">({{ filter_value.count }})</span>
+                    </label>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <!-- Default Standard Filter Groups if storefront filtering is not yet configured in admin -->
+          <div class="filter-group">
+            <h3 class="filter-heading">Explore By Room</h3>
+            <ul class="filter-options-list">
+              <li><a href="/collections/living-room" class="btn-link" style="font-size: 0.85rem;">Living Room</a></li>
+              <li><a href="/collections/bedroom" class="btn-link" style="font-size: 0.85rem;">Bedroom</a></li>
+              <li><a href="/collections/dining" class="btn-link" style="font-size: 0.85rem;">Dining</a></li>
+              <li><a href="/collections/office" class="btn-link" style="font-size: 0.85rem;">Office</a></li>
+            </ul>
+          </div>
+          <div class="filter-group">
+            <h3 class="filter-heading">Materials</h3>
+            <ul class="filter-options-list">
+              <li><span style="font-size: 0.85rem; color: var(--color-text-muted);">Solid Wood / Teak</span></li>
+              <li><span style="font-size: 0.85rem; color: var(--color-text-muted);">Linen & Velvet Upholstery</span></li>
+              <li><span style="font-size: 0.85rem; color: var(--color-text-muted);">Marble & Natural Stone</span></li>
+              <li><span style="font-size: 0.85rem; color: var(--color-text-muted);">Architectural Steel & Brass</span></li>
+            </ul>
+          </div>
+        {%- endif -%}
+      </form>
+    </aside>
+
+    <!-- Products Grid -->
+    <div class="collection-main-content">
+      {%- if collection.products.size == 0 -%}
+        <div style="text-align: center; padding: 4rem 1.5rem; background: var(--color-surface-warm); border-radius: 4px;">
+          <h2 style="font-family: var(--font-heading); margin-bottom: 0.75rem;">No products match your criteria</h2>
+          <p style="color: var(--color-text-muted); margin-bottom: 2rem;">
+            Try clearing active filters or explore other furniture and decor collections.
+          </p>
+          <a href="{{ collection.url }}" class="btn btn-secondary">Clear Filters</a>
+        </div>
+      {%- else -%}
+        <div class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">
+          {%- for product in collection.products -%}
+            {% render 'product-card', product_card_product: product %}
+          {%- endfor -%}
+        </div>
+
+        {% render 'pagination', paginate: paginate %}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Collection Page",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "label": "Enable native filtering",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "Enable sorting",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

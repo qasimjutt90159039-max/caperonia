@@ -1,0 +1,55 @@
+<section class="section-spacing" aria-label="Activate Account">
+  <div class="container" style="max-width: 520px; margin: 0 auto;">
+    <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 4px; padding: 2.5rem;">
+      <h1 style="font-size: 2.2rem; text-align: center; margin-bottom: 1rem;">Activate Your Account</h1>
+      <p style="text-align: center; color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 2rem;">
+        Create your password to activate your customer account.
+      </p>
+
+      {% form 'activate_customer_password' %}
+        {%- if form.errors -%}
+          <div style="background: rgba(142, 58, 43, 0.1); border: 1px solid var(--color-sale); color: var(--color-sale); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; font-size: 0.88rem;">
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div>
+            <label for="CustomerPassword" style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 0.4rem;">
+              Password
+            </label>
+            <input
+              type="password"
+              name="customer[password]"
+              id="CustomerPassword"
+              required
+              style="width: 100%; padding: 0.85rem; border: 1px solid var(--color-border); border-radius: 2px;"
+            >
+          </div>
+
+          <div>
+            <label for="CustomerPasswordConfirmation" style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 0.4rem;">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              name="customer[password_confirmation]"
+              id="CustomerPasswordConfirmation"
+              required
+              style="width: 100%; padding: 0.85rem; border: 1px solid var(--color-border); border-radius: 2px;"
+            >
+          </div>
+
+          <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+            <button type="submit" class="btn btn-primary" style="flex: 1; padding: 1rem;">
+              Activate
+            </button>
+            <button type="submit" name="decline" class="btn btn-secondary" style="flex: 1; padding: 1rem;">
+              Decline
+            </button>
+          </div>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</section>

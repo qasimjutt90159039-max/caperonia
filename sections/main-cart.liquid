@@ -1,0 +1,100 @@
+<section class="section-spacing" aria-label="Shopping Cart">
+  <div class="container container-narrow">
+    <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 2rem; text-align: center;">Your Cart</h1>
+
+    {%- if cart.item_count == 0 -%}
+      <div style="text-align: center; padding: 4rem 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 4px;">
+        <svg style="width: 56px; height: 56px; color: var(--color-text-light); margin: 0 auto 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <h2 style="font-family: var(--font-heading); margin-bottom: 0.75rem;">Your cart is empty</h2>
+        <p style="color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto;">
+          Explore our furniture collections and find something beautiful for your space.
+        </p>
+        <a href="/collections/all" class="btn btn-primary">Continue Shopping</a>
+      </div>
+    {%- else -%}
+      <form action="{{ routes.cart_url }}" method="post" id="cart-page-form">
+        <div style="border: 1px solid var(--color-border); border-radius: 4px; background: #fff; padding: 1.5rem; margin-bottom: 2rem;">
+          <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--color-border); text-align: left; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-light);">
+                <th style="padding-bottom: 1rem;">Product</th>
+                <th style="padding-bottom: 1rem; text-align: center;">Quantity</th>
+                <th style="padding-bottom: 1rem; text-align: right;">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%- for item in cart.items -%}
+                <tr style="border-bottom: 1px solid var(--color-surface-warm);">
+                  <td style="padding: 1.5rem 0; display: flex; gap: 1.25rem; align-items: center;">
+                    <img src="{{ item.image | image_url: width: 180 }}" alt="{{ item.title | escape }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 2px;">
+                    <div>
+                      <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 0.25rem;">
+                        <a href="{{ item.url }}">{{ item.product.title }}</a>
+                      </h3>
+                      {%- unless item.product.has_only_default_variant -%}
+                        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.35rem;">{{ item.variant.title }}</div>
+                      {%- endunless -%}
+                      <div style="font-size: 0.85rem; font-weight: 600;">{{ item.final_price | money }}</div>
+                      <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" style="font-size: 0.75rem; color: var(--color-sale); text-decoration: underline; display: inline-block; margin-top: 0.35rem;">
+                        Remove
+                      </a>
+                    </div>
+                  </td>
+                  <td style="padding: 1.5rem 0; text-align: center;">
+                    <div class="qty-stepper" style="height: 38px;">
+                      <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" class="qty-btn">&minus;</a>
+                      <input type="text" value="{{ item.quantity }}" readonly class="qty-input" style="width: 32px;">
+                      <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}" class="qty-btn">&#43;</a>
+                    </div>
+                  </td>
+                  <td style="padding: 1.5rem 0; text-align: right; font-weight: 600; font-size: 1.05rem;">
+                    {{ item.final_line_price | money }}
+                  </td>
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+          <div style="background: var(--color-surface-warm); padding: 1.5rem; border-radius: 4px;">
+            <label for="CartPage-Note" style="font-weight: 600; font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 0.5rem;">
+              Order / Delivery Notes:
+            </label>
+            <textarea
+              id="CartPage-Note"
+              name="note"
+              rows="3"
+              style="width: 100%; border: 1px solid var(--color-border); border-radius: 2px; padding: 0.75rem; font-size: 0.9rem;"
+              placeholder="Provide delivery instructions, specific requirements or contact preferences..."
+            >{{ cart.note }}</textarea>
+          </div>
+
+          <div style="text-align: right; background: #fff; border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 4px;">
+            <div style="font-size: 1.3rem; margin-bottom: 0.5rem;">
+              Subtotal: <strong>{{ cart.total_price | money }}</strong>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">
+              Taxes and shipping charges calculated securely at Shopify Checkout.
+            </p>
+            <div style="display: flex; justify-content: flex-end; gap: 1rem; flex-wrap: wrap;">
+              <a href="/collections/all" class="btn btn-secondary">Continue Shopping</a>
+              <button type="submit" name="checkout" class="btn btn-primary" style="padding: 1rem 2.5rem;">
+                Proceed to Checkout &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart Page",
+  "settings": []
+}
+{% endschema %}

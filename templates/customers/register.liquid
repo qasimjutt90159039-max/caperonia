@@ -1,0 +1,88 @@
+<section class="section-spacing" aria-label="Create Customer Account">
+  <div class="container" style="max-width: 520px; margin: 0 auto;">
+    <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 4px; padding: 2.5rem;">
+      <span class="section-eyebrow" style="text-align: center; display: block;">Join Caperino</span>
+      <h1 style="font-size: 2.2rem; text-align: center; margin-bottom: 2rem;">Create Account</h1>
+
+      {% form 'create_customer' %}
+        {%- if form.errors -%}
+          <div style="background: rgba(142, 58, 43, 0.1); border: 1px solid var(--color-sale); color: var(--color-sale); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; font-size: 0.88rem;">
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div>
+            <label for="FirstName" style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 0.4rem;">
+              First Name
+            </label>
+            <input
+              type="text"
+              name="customer[first_name]"
+              id="FirstName"
+              {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+              autocomplete="given-name"
+              style="width: 100%; padding: 0.85rem; border: 1px solid var(--color-border); border-radius: 2px;"
+            >
+          </div>
+
+          <div>
+            <label for="LastName" style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 0.4rem;">
+              Last Name
+            </label>
+            <input
+              type="text"
+              name="customer[last_name]"
+              id="LastName"
+              {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+              autocomplete="family-name"
+              style="width: 100%; padding: 0.85rem; border: 1px solid var(--color-border); border-radius: 2px;"
+            >
+          </div>
+
+          <div>
+            <label for="Email" style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 0.4rem;">
+              Email Address
+            </label>
+            <input
+              type="email"
+              name="customer[email]"
+              id="Email"
+              {% if form.email %}value="{{ form.email }}"{% endif %}
+              spellcheck="false"
+              autocapitalize="off"
+              autocomplete="email"
+              required
+              style="width: 100%; padding: 0.85rem; border: 1px solid var(--color-border); border-radius: 2px;"
+            >
+          </div>
+
+          <div>
+            <label for="CreatePassword" style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 0.4rem;">
+              Password
+            </label>
+            <input
+              type="password"
+              name="customer[password]"
+              id="CreatePassword"
+              required
+              autocomplete="new-password"
+              style="width: 100%; padding: 0.85rem; border: 1px solid var(--color-border); border-radius: 2px;"
+            >
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="padding: 1rem; margin-top: 0.5rem;">
+            Create Account
+          </button>
+
+          <div style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-muted);">
+            Already have an account?
+            <a href="{{ routes.account_login_url }}" style="color: var(--color-text-main); font-weight: 600; text-decoration: underline;">
+              Sign in here
+            </a>
+          </div>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+{%- comment -%}
+  Renders a product's price, compare at price, and sale badge
+  Usage:
+  {% render 'price', product: product, use_variant: true %}
+{%- endcomment -%}
+
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 199900
+  assign available = target.available | default: false
+  assign money_price = price | money
+-%}
+
+<div class="product-price-wrapper">
+  {%- if compare_at_price > price -%}
+    <span class="price-regular text-sale">{{ money_price }}</span>
+    <span class="price-compare">{{ compare_at_price | money }}</span>
+  {%- else -%}
+    <span class="price-regular">{{ money_price }}</span>
+  {%- endif -%}
+
+  {%- unless available -%}
+    <span class="product-badge badge-sold-out" style="background:#555; color:#fff; margin-left:6px; font-size:0.7rem; padding:2px 6px;">Sold Out</span>
+  {%- endunless -%}
+</div>

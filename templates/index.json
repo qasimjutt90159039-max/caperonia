@@ -1,0 +1,320 @@
+{
+  "name": "Homepage",
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "eyebrow": "Handcrafted Living & Interiors",
+        "heading": "Furniture That Transforms Your Space",
+        "subheading": "Discover furniture and interior pieces designed to bring comfort, character and style into your home.",
+        "button_1_text": "Shop Furniture",
+        "button_1_link": "/collections/furniture",
+        "button_2_text": "Explore Collections",
+        "button_2_link": "/collections/all"
+      }
+    },
+    "category_grid": {
+      "type": "category-grid",
+      "blocks": {
+        "cat_living": {
+          "type": "category_item",
+          "settings": {
+            "title": "Living Room",
+            "link": "/collections/living-room",
+            "default_image_url": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=80"
+          }
+        },
+        "cat_bedroom": {
+          "type": "category_item",
+          "settings": {
+            "title": "Bedroom",
+            "link": "/collections/bedroom",
+            "default_image_url": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80"
+          }
+        },
+        "cat_dining": {
+          "type": "category_item",
+          "settings": {
+            "title": "Dining Room",
+            "link": "/collections/dining",
+            "default_image_url": "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=700&q=80"
+          }
+        },
+        "cat_office": {
+          "type": "category_item",
+          "settings": {
+            "title": "Office",
+            "link": "/collections/office",
+            "default_image_url": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=700&q=80"
+          }
+        },
+        "cat_decor": {
+          "type": "category_item",
+          "settings": {
+            "title": "Home Decor",
+            "link": "/collections/home-decor",
+            "default_image_url": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80"
+          }
+        },
+        "cat_lighting": {
+          "type": "category_item",
+          "settings": {
+            "title": "Lighting",
+            "link": "/collections/lighting",
+            "default_image_url": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80"
+          }
+        },
+        "cat_rugs": {
+          "type": "category_item",
+          "settings": {
+            "title": "Rugs",
+            "link": "/collections/rugs",
+            "default_image_url": "https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=700&q=80"
+          }
+        },
+        "cat_storage": {
+          "type": "category_item",
+          "settings": {
+            "title": "Storage",
+            "link": "/collections/storage",
+            "default_image_url": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=700&q=80"
+          }
+        }
+      },
+      "block_order": [
+        "cat_living",
+        "cat_bedroom",
+        "cat_dining",
+        "cat_office",
+        "cat_decor",
+        "cat_lighting",
+        "cat_rugs",
+        "cat_storage"
+      ],
+      "settings": {
+        "eyebrow": "Curated Collections",
+        "heading": "Shop By Category",
+        "subheading": "Explore our curated furniture and interior design collections for every space."
+      }
+    },
+    "featured_furniture": {
+      "type": "featured-furniture",
+      "settings": {
+        "eyebrow": "Signature Craftsmanship",
+        "heading": "Featured Furniture",
+        "subheading": "Curated sofa sets, coffee tables, beds, wardrobes, dining sets and console tables.",
+        "products_to_show": 8
+      }
+    },
+    "living_room": {
+      "type": "living-room-section",
+      "settings": {
+        "eyebrow": "Living Space",
+        "heading": "Create a Living Room You Love",
+        "description": "The living room is where everyday life unfolds. Explore sofas, sectionals, consoles, and artisanal coffee tables designed for warmth and timeless presence.",
+        "cta_text": "Shop Living Room",
+        "link": "/collections/living-room",
+        "products_to_show": 4
+      }
+    },
+    "bedroom": {
+      "type": "bedroom-section",
+      "settings": {
+        "eyebrow": "Sanctuary & Rest",
+        "heading": "Comfort Starts at Home",
+        "description": "Create your personal retreat. Thoughtfully constructed bed frames, nightstands, wardrobes, and dressing consoles designed with balanced proportions.",
+        "cta_text": "Shop Bedroom",
+        "link": "/collections/bedroom",
+        "products_to_show": 4
+      }
+    },
+    "dining": {
+      "type": "dining-section",
+      "settings": {
+        "eyebrow": "Shared Moments",
+        "heading": "Gather Around Something Beautiful",
+        "description": "From intimate morning meals to grand celebratory dinners, our solid dining tables, comfortable upholstered chairs, and storage sideboards anchor your gathering space.",
+        "cta_text": "Explore Dining",
+        "link": "/collections/dining",
+        "products_to_show": 4
+      }
+    },
+    "home_decor": {
+      "type": "home-decor-section",
+      "settings": {
+        "eyebrow": "Finishing Touches",
+        "heading": "Artisanal Home Decor",
+        "subheading": "Mirrors, wall art, ceramic vases, sculptures, and architectural accents to elevate every corner.",
+        "cta_text": "Shop Home Decor",
+        "link": "/collections/home-decor",
+        "products_to_show": 4
+      }
+    },
+    "lighting": {
+      "type": "lighting-section",
+      "settings": {
+        "eyebrow": "Illumination & Ambiance",
+        "heading": "Light Up Your Space",
+        "description": "Lighting sets the mood and illuminates the fine craftsmanship of your furniture. Discover statement chandeliers, sculptural pendants, and architectural lamps.",
+        "cta_text": "Explore Lighting",
+        "link": "/collections/lighting",
+        "products_to_show": 4
+      }
+    },
+    "rugs_textiles": {
+      "type": "rugs-textiles-section",
+      "settings": {
+        "eyebrow": "Texture & Warmth",
+        "heading": "Rugs & Textiles",
+        "subheading": "Area rugs, runners, Persian weaves, and soft textiles to ground your living and bedroom spaces.",
+        "cta_text": "Explore Rugs & Textiles",
+        "link": "/collections/rugs",
+        "products_to_show": 4
+      }
+    },
+    "interior_products": {
+      "type": "interior-products-section",
+      "blocks": {
+        "panel_1": {
+          "type": "interior_category",
+          "settings": {
+            "title": "Wooden Wall Panels",
+            "description": "Fluted oak, teak, and slat paneling for warm acoustic elegance.",
+            "fallback_image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+            "link": "/collections/interior-products"
+          }
+        },
+        "panel_2": {
+          "type": "interior_category",
+          "settings": {
+            "title": "PVC & Fluted Panels",
+            "description": "Durable, moisture-resistant modern fluted finishes.",
+            "fallback_image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80",
+            "link": "/collections/interior-products"
+          }
+        },
+        "panel_3": {
+          "type": "interior_category",
+          "settings": {
+            "title": "Decorative Feature Panels",
+            "description": "Textured feature wall paneling and 3D architectural profiles.",
+            "fallback_image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80",
+            "link": "/collections/interior-products"
+          }
+        },
+        "panel_4": {
+          "type": "interior_category",
+          "settings": {
+            "title": "Wallpapers & Textures",
+            "description": "Linen, subtle grasscloth, and contemporary pattern finishes.",
+            "fallback_image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+            "link": "/collections/interior-products"
+          }
+        }
+      },
+      "block_order": [
+        "panel_1",
+        "panel_2",
+        "panel_3",
+        "panel_4"
+      ],
+      "settings": {
+        "eyebrow": "Architectural Surfaces",
+        "heading": "Interior Products & Wall Panels",
+        "subheading": "Transform bare walls and interiors with architectural wall panels, decorative acoustic slats, fluted PVC, and specialty ceiling elements."
+      }
+    },
+    "editorial_banner": {
+      "type": "editorial-banner",
+      "settings": {
+        "eyebrow": "Interior Philosophy",
+        "heading": "Make Your Space Your Own",
+        "subheading": "Explore furniture and interior pieces for living, dining, bedroom and everyday spaces.",
+        "button_text": "Shop Collection",
+        "button_link": "/collections/all"
+      }
+    },
+    "best_sellers": {
+      "type": "best-sellers",
+      "settings": {
+        "eyebrow": "Customer Favorites",
+        "heading": "Best Sellers",
+        "subheading": "Our most sought-after living, dining, and bedroom furniture.",
+        "products_to_show": 4
+      }
+    },
+    "why_shop": {
+      "type": "why-shop-with-us",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "cart",
+            "title": "Easy Online Shopping",
+            "text": "Browse high-resolution photographs, detailed dimensions, and variant options from the comfort of your home."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "styles",
+            "title": "Multiple Furniture Styles",
+            "text": "From clean contemporary lines to warm classic silhouettes, discover pieces tailored to your personal aesthetic."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "interior",
+            "title": "Home & Interior Products",
+            "text": "Complete your space with wall paneling, modern lighting, and hand-selected decorative accessories."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "security",
+            "title": "Secure Shopify Checkout",
+            "text": "Your order information and transactions are encrypted and processed safely through certified Shopify checkout."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
+      "settings": {
+        "eyebrow": "The Caperino Experience",
+        "heading": "Why Shop With Us",
+        "subheading": "We bring thoughtful furniture design and curated interior products to your doorstep."
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay Connected",
+        "heading": "Get Interior Inspiration",
+        "subheading": "Subscribe to receive seasonal furniture arrivals, interior styling guides, and collection previews.",
+        "button_text": "Subscribe"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "category_grid",
+    "featured_furniture",
+    "living_room",
+    "bedroom",
+    "dining",
+    "home_decor",
+    "lighting",
+    "rugs_textiles",
+    "interior_products",
+    "editorial_banner",
+    "best_sellers",
+    "why_shop",
+    "newsletter"
+  ]
+}

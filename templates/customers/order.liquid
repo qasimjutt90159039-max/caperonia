@@ -1,0 +1,85 @@
+<section class="section-spacing" aria-label="Customer Order Details">
+  <div class="container container-narrow">
+    <div style="margin-bottom: 2rem;">
+      <a href="{{ routes.account_url }}" class="btn-link" style="font-size: 0.8rem; margin-bottom: 0.5rem; display: inline-block;">&larr; Back to Orders</a>
+      <h1 style="font-size: 2.4rem; margin-bottom: 0.25rem;">Order {{ order.name }}</h1>
+      <p style="color: var(--color-text-muted); font-size: 0.9rem;">Placed on {{ order.created_at | date: '%B %d, %Y at %I:%M %p' }}</p>
+    </div>
+
+    {%- if order.cancelled -%}
+      <div style="background: rgba(142, 58, 43, 0.1); border: 1px solid var(--color-sale); color: var(--color-sale); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
+        Order was cancelled on {{ order.cancelled_at | date: '%B %d, %Y' }}. Reason: {{ order.cancel_reason }}
+      </div>
+    {%- endif -%}
+
+    <div style="border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; background: #fff; margin-bottom: 2rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+        <thead>
+          <tr style="background: var(--color-surface-warm); border-bottom: 1px solid var(--color-border); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em;">
+            <th style="padding: 1rem;">Product</th>
+            <th style="padding: 1rem; text-align: center;">SKU</th>
+            <th style="padding: 1rem; text-align: center;">Price</th>
+            <th style="padding: 1rem; text-align: center;">Quantity</th>
+            <th style="padding: 1rem; text-align: right;">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for line_item in order.line_items -%}
+            <tr style="border-bottom: 1px solid var(--color-surface-warm);">
+              <td style="padding: 1rem; font-weight: 500;">
+                {{ line_item.title }}
+                {%- if line_item.fulfillment -%}
+                  <div style="font-size: 0.75rem; color: var(--color-success); margin-top: 4px;">
+                    Fulfilled {{ line_item.fulfillment.created_at | date: '%b %d' }}
+                    {%- if line_item.fulfillment.tracking_number -%}
+                      &bull; Tracking: <a href="{{ line_item.fulfillment.tracking_url }}">{{ line_item.fulfillment.tracking_number }}</a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </td>
+              <td style="padding: 1rem; text-align: center; color: var(--color-text-muted);">{{ line_item.sku }}</td>
+              <td style="padding: 1rem; text-align: center;">{{ line_item.final_price | money }}</td>
+              <td style="padding: 1rem; text-align: center;">{{ line_item.quantity }}</td>
+              <td style="padding: 1rem; text-align: right; font-weight: 600;">{{ line_item.final_line_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+        <tfoot>
+          <tr style="border-top: 1px solid var(--color-border);">
+            <td colspan="4" style="padding: 0.85rem 1rem; text-align: right;">Subtotal:</td>
+            <td style="padding: 0.85rem 1rem; text-align: right; font-weight: 600;">{{ order.line_items_subtotal_price | money }}</td>
+          </tr>
+          <tr>
+            <td colspan="4" style="padding: 0.85rem 1rem; text-align: right;">Total:</td>
+            <td style="padding: 0.85rem 1rem; text-align: right; font-weight: 700; font-size: 1.1rem; color: var(--color-accent);">{{ order.total_net_amount | money_with_currency }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- Billing & Shipping Addresses -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+      <div style="background: var(--color-surface-warm); padding: 1.5rem; border-radius: 4px;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.5rem;">Billing Address</h3>
+        <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-main);">
+          Status: <strong>{{ order.financial_status_label }}</strong><br>
+          {{ order.billing_address.name }}<br>
+          {{ order.billing_address.address1 }}<br>
+          {{ order.billing_address.city }}, {{ order.billing_address.province_code }} {{ order.billing_address.zip }}<br>
+          {{ order.billing_address.country }}
+        </p>
+      </div>
+
+      <div style="background: var(--color-surface-warm); padding: 1.5rem; border-radius: 4px;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.5rem;">Shipping Address</h3>
+        <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-main);">
+          Status: <strong>{{ order.fulfillment_status_label }}</strong><br>
+          {{ order.shipping_address.name }}<br>
+          {{ order.shipping_address.address1 }}<br>
+          {{ order.shipping_address.city }}, {{ order.shipping_address.province_code }} {{ order.shipping_address.zip }}<br>
+          {{ order.shipping_address.country }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

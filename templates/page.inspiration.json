@@ -1,0 +1,64 @@
+{
+  "name": "Inspiration Page",
+  "sections": {
+    "main": {
+      "type": "main-inspiration",
+      "blocks": {
+        "room_1": {
+          "type": "inspiration_item",
+          "settings": {
+            "category_tag": "Living Room Inspiration",
+            "title": "Warm Minimalist Living Room",
+            "description": "Layered textures, solid timber coffee tables, and deep cushioned seating create an inviting living sanctuary.",
+            "fallback_image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80",
+            "link": "/collections/living-room",
+            "button_text": "Shop Living Room"
+          }
+        },
+        "room_2": {
+          "type": "inspiration_item",
+          "settings": {
+            "category_tag": "Bedroom Inspiration",
+            "title": "Serene Contemporary Bedroom",
+            "description": "Structured upholstered headboards paired with minimalist nightstands for quiet elegance and restful comfort.",
+            "fallback_image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
+            "link": "/collections/bedroom",
+            "button_text": "Shop Bedroom"
+          }
+        },
+        "room_3": {
+          "type": "inspiration_item",
+          "settings": {
+            "category_tag": "Dining Inspiration",
+            "title": "Architectural Dining Setting",
+            "description": "Solid hardwood dining tables surrounded by comfortable supportive chairs, anchored by warm ambient lighting.",
+            "fallback_image": "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=80",
+            "link": "/collections/dining",
+            "button_text": "Shop Dining"
+          }
+        },
+        "room_4": {
+          "type": "inspiration_item",
+          "settings": {
+            "category_tag": "Modern Interiors",
+            "title": "Feature Wall Paneling & Lighting",
+            "description": "Textured wall panel accents and directional sconces elevate standard living and reception rooms into designer spaces.",
+            "fallback_image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80",
+            "link": "/collections/interior-products",
+            "button_text": "Shop Interior Products"
+          }
+        }
+      },
+      "block_order": [
+        "room_1",
+        "room_2",
+        "room_3",
+        "room_4"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

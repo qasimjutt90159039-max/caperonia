@@ -1,0 +1,6 @@
+demo-data/
+preview/
+.git/
+.DS_Store
+*.zip
+README.md

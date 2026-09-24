@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#1D1A16">
+
+    {% render 'seo-meta' %}
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Theme Styles -->
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    {{ content_for_header }}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      window.theme = {
+        moneyFormat: {{ shop.money_format | json }},
+        shopCurrency: {{ shop.currency | json }}
+      };
+    </script>
+  </head>
+
+  <body class="template-{{ template.name | handle }}">
+    <a class="skip-to-content" href="#MainContent">Skip to content</a>
+
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+    {% section 'cart-drawer' %}
+
+    <!-- Predictive Search Modal -->
+    <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search Furniture">
+      <div class="search-modal-inner">
+        <div class="search-input-wrap">
+          <svg style="width: 22px; height: 22px; color: var(--color-accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="search"
+            class="predictive-search-input"
+            placeholder="Search sofa, bed, dining, lighting..."
+            aria-label="Search"
+            autocomplete="off"
+          >
+          <button type="button" data-close-search style="background: none; border: none; cursor: pointer; color: var(--color-text-main);">
+            <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="search-results-box">
+          <div style="text-align: center; padding: 2rem; color: var(--color-text-muted);">
+            <p style="font-size: 0.95rem;">Type to search our furniture and interior collection...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div class="wishlist-modal" role="dialog" aria-modal="true" aria-label="My Wishlist">
+      <div class="wishlist-modal-content">
+        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding-bottom: 1.25rem;">
+          <h2 style="font-family: var(--font-heading); font-size: 1.6rem;">Saved Items</h2>
+          <button type="button" data-close-wishlist style="background: none; border: none; cursor: pointer;">
+            <svg style="width: 22px; height: 22px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="wishlist-modal-body"></div>
+      </div>
+    </div>
+
+    {% render 'quick-view-modal' %}
+
+    <!-- Core Scripts -->
+    {{ 'theme.js' | asset_url | script_tag }}
+    {{ 'cart-drawer.js' | asset_url | script_tag }}
+    {{ 'predictive-search.js' | asset_url | script_tag }}
+    {{ 'wishlist.js' | asset_url | script_tag }}
+    {{ 'quick-view.js' | asset_url | script_tag }}
+    {{ 'product-gallery.js' | asset_url | script_tag }}
+  </body>
+</html>

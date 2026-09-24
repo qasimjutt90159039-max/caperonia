@@ -1,0 +1,64 @@
+{
+  "name": "Services Page",
+  "sections": {
+    "main": {
+      "type": "main-services",
+      "blocks": {
+        "srv_1": {
+          "type": "service_block",
+          "settings": {
+            "title": "Furniture Consultation",
+            "description": "Guidance on wood finishes, seating ergonomics, spatial layouts, and matching collections to existing room palettes."
+          }
+        },
+        "srv_2": {
+          "type": "service_block",
+          "settings": {
+            "title": "Custom Furniture Sizing",
+            "description": "Customizable dimensions on select beds, dining tables, consoles, and sofas to fit your home's unique layout."
+          }
+        },
+        "srv_3": {
+          "type": "service_block",
+          "settings": {
+            "title": "Residential Interiors",
+            "description": "Coordinated selection of wall paneling, focal mirrors, lighting fixtures, and loose furniture for home interiors."
+          }
+        },
+        "srv_4": {
+          "type": "service_block",
+          "settings": {
+            "title": "Commercial & Office Spaces",
+            "description": "Reception desks, executive desks, conference tables, and durable seating for modern commercial workspaces."
+          }
+        },
+        "srv_5": {
+          "type": "service_block",
+          "settings": {
+            "title": "Space Planning & Layouts",
+            "description": "Assistance in arranging furniture for optimal flow, natural light utilization, and balanced spatial proportions."
+          }
+        },
+        "srv_6": {
+          "type": "service_block",
+          "settings": {
+            "title": "On-Site Installation Support",
+            "description": "Assistance with assembly and placement of heavy solid timber pieces, bed frames, and modular wardrobes upon delivery."
+          }
+        }
+      },
+      "block_order": [
+        "srv_1",
+        "srv_2",
+        "srv_3",
+        "srv_4",
+        "srv_5",
+        "srv_6"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

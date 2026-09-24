@@ -1,0 +1,121 @@
+{%- liquid
+  assign collection = section.settings.collection
+  assign limit = section.settings.products_to_show | default: 4
+-%}
+
+<section class="section-spacing" style="background-color: var(--color-dark-bg); color: #FFFFFF;" aria-label="Lighting Collection">
+  <div class="container">
+    <div class="editorial-split-grid">
+      <div class="editorial-split-content" style="color: #FFFFFF;">
+        <span class="section-eyebrow" style="color: #E2CEB9;">{{ section.settings.eyebrow | default: 'Illumination & Ambiance' }}</span>
+        <h2 class="section-title" style="color: #FFFFFF;">{{ section.settings.heading | default: 'Light Up Your Space' }}</h2>
+        <p style="color: var(--color-dark-muted); font-size: 1.05rem; line-height: 1.65;">
+          {{ section.settings.description | default: 'Lighting sets the mood and illuminates the fine craftsmanship of your furniture. Discover statement chandeliers, sculptural pendants, and architectural lamps.' }}
+        </p>
+
+        <div class="editorial-subcategories">
+          <a href="/collections/chandeliers" class="editorial-subcat-pill" style="background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2);">Chandeliers</a>
+          <a href="/collections/pendant-lights" class="editorial-subcat-pill" style="background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2);">Pendant Lights</a>
+          <a href="/collections/ceiling-lights" class="editorial-subcat-pill" style="background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2);">Ceiling Lights</a>
+          <a href="/collections/wall-lights" class="editorial-subcat-pill" style="background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2);">Wall Lights</a>
+          <a href="/collections/table-lamps" class="editorial-subcat-pill" style="background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2);">Table Lamps</a>
+          <a href="/collections/floor-lamps" class="editorial-subcat-pill" style="background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2);">Floor Lamps</a>
+          <a href="/collections/decorative-lighting" class="editorial-subcat-pill" style="background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2);">Decorative Lighting</a>
+        </div>
+
+        <a href="{{ section.settings.link | default: '/collections/lighting' }}" class="btn btn-primary" style="background: #FFFFFF; color: #1D1A16; border-color: #FFFFFF;">
+          {{ section.settings.cta_text | default: 'Explore Lighting' }}
+        </a>
+      </div>
+
+      <div class="editorial-split-media">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 1200 }}"
+            alt="{{ section.settings.heading | escape }}"
+            loading="lazy"
+            width="1200"
+            height="850"
+          >
+        {%- else -%}
+          <img
+            src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1200&q=80"
+            alt="Lighting Collection Caperino"
+            loading="lazy"
+          >
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if collection != blank and collection.products.size > 0 -%}
+      <div style="margin-top: 3.5rem;">
+        <div class="product-grid">
+          {%- for product in collection.products limit: limit -%}
+            {% render 'product-card', product_card_product: product %}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lighting Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow tag",
+      "default": "Illumination & Ambiance"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Light Up Your Space"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Lighting sets the mood and illuminates the fine craftsmanship of your furniture. Discover statement chandeliers, sculptural pendants, and architectural lamps."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Editorial Image"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Explore Lighting"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Lighting Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 2,
+      "default": 4,
+      "label": "Products to show"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lighting Section"
+    }
+  ]
+}
+{% endschema %}

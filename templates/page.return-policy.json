@@ -1,0 +1,12 @@
+{
+  "name": "Return Policy",
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

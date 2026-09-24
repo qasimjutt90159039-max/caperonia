@@ -1,0 +1,38 @@
+{
+  "current": {
+    "business_phone": "+92 300 9630392",
+    "business_location": "Main Vehari Road, near Chungi No. 22, Timber Market, Multan, Punjab, Pakistan",
+    "color_bg": "#FAF8F5",
+    "color_surface": "#FFFFFF",
+    "color_surface_warm": "#F4EFEB",
+    "color_text_main": "#1D1A16",
+    "color_accent": "#9B7653",
+    "color_sale": "#8E3A2B",
+    "cart_drawer_enabled": true,
+    "cart_notes_enabled": true,
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "show_announcement": true,
+          "text": "Transform Your Space With Beautiful Furniture",
+          "link_text": "Shop New Arrivals",
+          "link": "/collections/new-arrivals"
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_width": 170,
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "copyright_text": "Caperino Furnitures & Interiors"
+        }
+      }
+    }
+  }
+}

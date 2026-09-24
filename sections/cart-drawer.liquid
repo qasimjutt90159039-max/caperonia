@@ -1,0 +1,87 @@
+<div class="cart-drawer-overlay" data-close-cart></div>
+
+<div class="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping Cart">
+  <div class="cart-drawer-header">
+    <h2 class="cart-drawer-title">Shopping Cart (<span class="cart-badge-count">{{ cart.item_count }}</span>)</h2>
+    <button type="button" class="cart-drawer-close" data-close-cart aria-label="Close cart">
+      <svg style="width: 22px; height: 22px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="cart-drawer-items">
+    {%- if cart.item_count == 0 -%}
+      <div class="cart-drawer-empty">
+        <svg class="cart-drawer-empty-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <h3 style="font-family: var(--font-heading); margin-bottom: 0.5rem; font-size: 1.35rem;">Your Cart is Empty</h3>
+        <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">Explore our furniture collections and find something for your space.</p>
+        <a href="/collections/all" class="btn btn-primary" data-close-cart>Explore Collections</a>
+      </div>
+    {%- else -%}
+      {%- for item in cart.items -%}
+        <div class="cart-item" data-key="{{ item.key }}">
+          <div class="cart-item-image">
+            <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" loading="lazy">
+          </div>
+          <div class="cart-item-details">
+            <h4 class="cart-item-title"><a href="{{ item.url }}">{{ item.product.title }}</a></h4>
+            {%- unless item.product.has_only_default_variant -%}
+              <div class="cart-item-variant">{{ item.variant.title }}</div>
+            {%- endunless -%}
+            <div class="cart-item-price">{{ item.final_line_price | money }}</div>
+            <div class="cart-item-controls">
+              <div class="cart-item-qty">
+                <button type="button" class="cart-qty-btn cart-qty-minus" data-key="{{ item.key }}" data-qty="{{ item.quantity | minus: 1 }}">&minus;</button>
+                <span>{{ item.quantity }}</span>
+                <button type="button" class="cart-qty-btn cart-qty-plus" data-key="{{ item.key }}" data-qty="{{ item.quantity | plus: 1 }}">&#43;</button>
+              </div>
+              <button type="button" class="cart-item-remove" data-key="{{ item.key }}">Remove</button>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+
+  <div class="cart-drawer-footer" style="{% if cart.item_count == 0 %}display: none;{% endif %}">
+    <div class="cart-subtotal-row">
+      <span>Subtotal</span>
+      <span class="cart-subtotal-amount">{{ cart.total_price | money }}</span>
+    </div>
+    <div class="cart-tax-notice">Taxes, shipping, and discounts calculated at checkout.</div>
+
+    <form action="{{ routes.cart_url }}" method="post" id="cart-drawer-form">
+      <div style="margin-bottom: 1rem;">
+        <label for="CartDrawer-Note" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.35rem; color: var(--color-text-muted);">
+          Special Order / Delivery Instructions
+        </label>
+        <textarea
+          id="CartDrawer-Note"
+          name="note"
+          rows="2"
+          placeholder="e.g., Delivery notes, preferred floor level, etc."
+          style="width: 100%; border: 1px solid var(--color-border); border-radius: 2px; padding: 0.5rem; font-size: 0.85rem;"
+        >{{ cart.note }}</textarea>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <button type="submit" name="checkout" class="btn btn-primary btn-block">
+          Proceed to Checkout &rarr;
+        </button>
+        <a href="{{ routes.cart_url }}" class="btn btn-secondary btn-block" style="padding: 0.65rem; font-size: 0.8rem;">
+          View Full Cart
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart Drawer",
+  "settings": []
+}
+{% endschema %}

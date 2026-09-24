@@ -1,0 +1,174 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign featured_media = current_variant.featured_media | default: product.featured_media
+  assign on_sale = false
+  if current_variant.compare_at_price > current_variant.price
+    assign on_sale = true
+  endif
+-%}
+
+<section class="product-page-section" aria-label="{{ product.title | escape }}">
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <nav style="margin-bottom: 2rem; font-size: 0.82rem; color: var(--color-text-muted);">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span style="margin: 0 6px;">/</span>
+      {%- if collection -%}
+        <a href="{{ collection.url }}">{{ collection.title }}</a>
+        <span style="margin: 0 6px;">/</span>
+      {%- else -%}
+        <a href="/collections/all">Furniture</a>
+        <span style="margin: 0 6px;">/</span>
+      {%- endif -%}
+      <span style="color: var(--color-text-main);">{{ product.title }}</span>
+    </nav>
+
+    <div class="pdp-grid">
+      <!-- Media Gallery Column -->
+      <div class="pdp-gallery-wrap">
+        <div class="pdp-gallery-main">
+          <img
+            src="{{ featured_media | image_url: width: 1200 }}"
+            alt="{{ featured_media.alt | default: product.title | escape }}"
+            loading="eager"
+            width="1200"
+            height="1200"
+          >
+          {%- if on_sale -%}
+            <span class="product-badge badge-sale" style="top: 16px; left: 16px;">Sale</span>
+          {%- endif -%}
+        </div>
+
+        {%- if product.media.size > 1 -%}
+          <div class="pdp-gallery-thumbnails">
+            {%- for media in product.media -%}
+              <div
+                class="pdp-thumb-item {% if forloop.first %}is-active{% endif %}"
+                data-media-id="{{ media.id }}"
+                data-media-src="{{ media | image_url: width: 1200 }}"
+                data-media-alt="{{ media.alt | default: product.title | escape }}"
+              >
+                <img
+                  src="{{ media | image_url: width: 160, height: 160 }}"
+                  alt="{{ media.alt | default: product.title | escape }}"
+                  loading="lazy"
+                >
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Product Information Column -->
+      <div class="pdp-details">
+        <div class="pdp-vendor">{{ product.vendor | default: 'Caperino Furnitures & Interiors' }}</div>
+        <h1 class="pdp-title">{{ product.title }}</h1>
+
+        <div class="pdp-price-wrap">
+          <span class="pdp-price">{{ current_variant.price | money }}</span>
+          <span
+            class="pdp-compare-price"
+            style="{% unless current_variant.compare_at_price > current_variant.price %}display: none;{% endunless %}"
+          >
+            {{ current_variant.compare_at_price | money }}
+          </span>
+        </div>
+
+        {%- if product.description != blank -%}
+          <div class="pdp-description rte">
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+
+        <!-- Product Purchasing Form -->
+        {% form 'product', product, id: 'product-form-installment', class: 'product-form' %}
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+
+          <!-- Variant Picker -->
+          {% render 'product-variant-picker', product: product %}
+
+          <!-- Quantity & Add to Cart -->
+          <div class="pdp-purchase-actions">
+            <div class="qty-and-cart-row">
+              <div class="qty-stepper">
+                <button type="button" class="qty-btn qty-minus" aria-label="Decrease quantity">&minus;</button>
+                <input
+                  type="number"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                  class="qty-input"
+                  aria-label="Quantity"
+                >
+                <button type="button" class="qty-btn qty-plus" aria-label="Increase quantity">&#43;</button>
+              </div>
+
+              {%- if current_variant.available -%}
+                <button type="submit" name="add" class="btn btn-primary btn-add-to-cart-main">
+                  Add to Cart
+                </button>
+              {%- else -%}
+                <button type="submit" name="add" class="btn btn-primary btn-add-to-cart-main" disabled>
+                  Sold Out
+                </button>
+              {%- endif -%}
+            </div>
+
+            <!-- Shopify Native Dynamic Checkout Button (Buy Now) -->
+            {{ form | payment_button }}
+          </div>
+        {% endform %}
+
+        <!-- Secondary Actions (Wishlist & Share) -->
+        <div class="pdp-secondary-actions">
+          <button
+            type="button"
+            class="pdp-action-link btn-wishlist-toggle"
+            data-product-id="{{ product.id }}"
+            data-variant-id="{{ current_variant.id }}"
+            data-product-title="{{ product.title | escape }}"
+            data-product-price="{{ current_variant.price | money }}"
+            data-product-image="{{ featured_media | image_url: width: 400 }}"
+            data-product-url="{{ product.url }}"
+            data-product-vendor="{{ product.vendor | escape }}"
+            style="background: none; border: none; font-size: 0.88rem;"
+          >
+            <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            Save to Wishlist
+          </button>
+
+          <button
+            type="button"
+            class="pdp-action-link"
+            onclick="navigator.clipboard.writeText(window.location.href); if (window.showToast) window.showToast('Product link copied to clipboard!');"
+            style="background: none; border: none; font-size: 0.88rem;"
+          >
+            <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+            </svg>
+            Share Piece
+          </button>
+        </div>
+
+        <!-- Dimension Guide & Furniture Metafields -->
+        {% render 'product-dimensions', product: product %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Page",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_share_buttons",
+      "label": "Show share buttons",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

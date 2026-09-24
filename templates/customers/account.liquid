@@ -1,0 +1,92 @@
+<section class="section-spacing" aria-label="Customer Account Dashboard">
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <span class="section-eyebrow">Customer Account</span>
+        <h1 style="font-size: 2.5rem; margin-bottom: 0;">Welcome, {{ customer.name }}</h1>
+      </div>
+      <div>
+        <a href="{{ routes.account_logout_url }}" class="btn btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;">
+          Log Out
+        </a>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 3rem;" class="account-dashboard-grid">
+      <!-- Order History -->
+      <div>
+        <h2 style="font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 1.25rem;">Order History</h2>
+        {%- paginate customer.orders by 10 -%}
+          {%- if customer.orders.size > 0 -%}
+            <div style="border: 1px solid var(--color-border); border-radius: 4px; overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+                <thead>
+                  <tr style="background: var(--color-surface-warm); border-bottom: 1px solid var(--color-border); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em;">
+                    <th style="padding: 1rem;">Order</th>
+                    <th style="padding: 1rem;">Date</th>
+                    <th style="padding: 1rem;">Payment</th>
+                    <th style="padding: 1rem;">Fulfillment</th>
+                    <th style="padding: 1rem; text-align: right;">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%- for order in customer.orders -%}
+                    <tr style="border-bottom: 1px solid var(--color-surface-warm);">
+                      <td style="padding: 1rem; font-weight: 600;">
+                        <a href="{{ order.customer_url }}" style="color: var(--color-accent); text-decoration: underline;">
+                          {{ order.name }}
+                        </a>
+                      </td>
+                      <td style="padding: 1rem;">{{ order.created_at | date: '%B %d, %Y' }}</td>
+                      <td style="padding: 1rem;">{{ order.financial_status_label }}</td>
+                      <td style="padding: 1rem;">{{ order.fulfillment_status_label }}</td>
+                      <td style="padding: 1rem; text-align: right; font-weight: 600;">{{ order.total_net_amount | money_with_currency }}</td>
+                    </tr>
+                  {%- endfor -%}
+                </tbody>
+              </table>
+            </div>
+            {% render 'pagination', paginate: paginate %}
+          {%- else -%}
+            <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 4px; padding: 2.5rem; text-align: center;">
+              <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">You haven't placed any furniture orders yet.</p>
+              <a href="/collections/all" class="btn btn-primary">Start Browsing Furniture</a>
+            </div>
+          {%- endif -%}
+        {%- endpaginate -%}
+      </div>
+
+      <!-- Account / Address Details -->
+      <div>
+        <div style="background: var(--color-surface-warm); border-radius: 4px; padding: 2rem;">
+          <h2 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;">Primary Address</h2>
+          {%- if customer.default_address -%}
+            <div style="font-size: 0.95rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 1.5rem;">
+              {{ customer.default_address.first_name }} {{ customer.default_address.last_name }}<br>
+              {%- if customer.default_address.company != blank -%}{{ customer.default_address.company }}<br>{%- endif -%}
+              {{ customer.default_address.address1 }}<br>
+              {%- if customer.default_address.address2 != blank -%}{{ customer.default_address.address2 }}<br>{%- endif -%}
+              {{ customer.default_address.city }}, {{ customer.default_address.province_code }} {{ customer.default_address.zip }}<br>
+              {{ customer.default_address.country }}<br>
+              {%- if customer.default_address.phone != blank -%}{{ customer.default_address.phone }}{%- endif -%}
+            </div>
+          {%- else -%}
+            <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">No default address provided.</p>
+          {%- endif -%}
+
+          <a href="{{ routes.account_addresses_url }}" class="btn btn-secondary btn-block" style="font-size: 0.82rem; padding: 0.75rem;">
+            Manage Addresses ({{ customer.addresses_count }})
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (min-width: 900px) {
+    .account-dashboard-grid {
+      grid-template-columns: 2fr 1fr !important;
+    }
+  }
+</style>

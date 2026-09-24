@@ -1,0 +1,57 @@
+{%- paginate search.results by 12 -%}
+<section class="section-spacing" aria-label="Search Results">
+  <div class="container">
+    <div class="section-header text-center" style="max-width: 640px; margin: 0 auto 3rem;">
+      <span class="section-eyebrow">Search Catalog</span>
+      <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1.5rem;">
+        {%- if search.performed -%}
+          Results for &ldquo;{{ search.terms | escape }}&rdquo; ({{ search.results_count }})
+        {%- else -%}
+          Search Furniture & Interiors
+        {%- endif -%}
+      </h1>
+
+      <form action="{{ routes.search_url }}" method="get" role="search" style="display: flex; gap: 0.5rem; max-width: 520px; margin: 0 auto;">
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="Search sofas, beds, lighting, decor..."
+          style="flex: 1; padding: 0.85rem 1.25rem; border: 1px solid var(--color-border); border-radius: 2px; font-size: 0.95rem;"
+          aria-label="Search"
+        >
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+
+    {%- if search.performed -%}
+      {%- if search.results_count == 0 -%}
+        <div style="text-align: center; padding: 4rem 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 4px; max-width: 680px; margin: 0 auto;">
+          <h2 style="font-family: var(--font-heading); margin-bottom: 0.75rem;">No products found</h2>
+          <p style="color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 2rem;">
+            Try another search or explore our collections.
+          </p>
+          <a href="/collections/all" class="btn btn-secondary">Explore All Collections</a>
+        </div>
+      {%- else -%}
+        <div class="product-grid">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', product_card_product: item %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {% render 'pagination', paginate: paginate %}
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Search Page",
+  "settings": []
+}
+{% endschema %}

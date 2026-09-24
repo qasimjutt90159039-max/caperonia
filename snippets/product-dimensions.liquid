@@ -1,0 +1,102 @@
+{%- comment -%}
+  Caperino Furnitures & Interiors - Product Specifications & Dimension Guide
+  Strictly dynamically renders only when merchant has entered data into Shopify Metafields.
+  Namespace supported: custom.* or furniture.*
+{%- endcomment -%}
+
+{%- liquid
+  assign width = product.metafields.custom.width | default: product.metafields.furniture.width
+  assign height = product.metafields.custom.height | default: product.metafields.furniture.height
+  assign depth = product.metafields.custom.depth | default: product.metafields.furniture.depth
+  assign weight = product.metafields.custom.weight | default: product.metafields.furniture.weight
+  assign material = product.metafields.custom.material | default: product.metafields.furniture.material
+  assign finish = product.metafields.custom.finish | default: product.metafields.furniture.finish
+  assign room = product.metafields.custom.room | default: product.metafields.furniture.room
+  assign assembly = product.metafields.custom.assembly_required | default: product.metafields.furniture.assembly_required
+  assign care = product.metafields.custom.care_instructions | default: product.metafields.furniture.care_instructions
+
+  assign has_dimensions = false
+  if width != blank or height != blank or depth != blank or weight != blank
+    assign has_dimensions = true
+  endif
+
+  assign has_specs = false
+  if material != blank or finish != blank or room != blank or assembly != blank or care != blank or has_dimensions
+    assign has_specs = true
+  endif
+-%}
+
+{%- if has_specs -%}
+  <div class="specs-card" id="furniture-dimensions-guide">
+    <h3 class="specs-title">
+      <svg style="width: 20px; height: 20px; color: var(--color-accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+      </svg>
+      Dimensions & Product Details
+    </h3>
+
+    {%- if has_dimensions -%}
+      <div class="dimension-visual-box">
+        {%- if width != blank -%}
+          <div>
+            <span class="dim-item-label">Width</span>
+            <span class="dim-item-value">{{ width }}</span>
+          </div>
+        {%- endif -%}
+        {%- if height != blank -%}
+          <div>
+            <span class="dim-item-label">Height</span>
+            <span class="dim-item-value">{{ height }}</span>
+          </div>
+        {%- endif -%}
+        {%- if depth != blank -%}
+          <div>
+            <span class="dim-item-label">Depth</span>
+            <span class="dim-item-value">{{ depth }}</span>
+          </div>
+        {%- endif -%}
+        {%- if weight != blank -%}
+          <div>
+            <span class="dim-item-label">Weight</span>
+            <span class="dim-item-value">{{ weight }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <table class="specs-table" style="margin-top: 1.25rem;">
+      <tbody>
+        {%- if material != blank -%}
+          <tr>
+            <th>Primary Material</th>
+            <td>{{ material }}</td>
+          </tr>
+        {%- endif -%}
+        {%- if finish != blank -%}
+          <tr>
+            <th>Finish</th>
+            <td>{{ finish }}</td>
+          </tr>
+        {%- endif -%}
+        {%- if room != blank -%}
+          <tr>
+            <th>Recommended Room</th>
+            <td>{{ room }}</td>
+          </tr>
+        {%- endif -%}
+        {%- if assembly != blank -%}
+          <tr>
+            <th>Assembly Required</th>
+            <td>{{ assembly }}</td>
+          </tr>
+        {%- endif -%}
+        {%- if care != blank -%}
+          <tr>
+            <th>Care & Cleaning</th>
+            <td>{{ care }}</td>
+          </tr>
+        {%- endif -%}
+      </tbody>
+    </table>
+  </div>
+{%- endif -%}

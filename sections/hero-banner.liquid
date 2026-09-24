@@ -1,0 +1,104 @@
+<section class="hero-section" aria-label="Hero Showcase">
+  <div class="hero-bg-media">
+    {%- if section.settings.image != blank -%}
+      <img
+        src="{{ section.settings.image | image_url: width: 2000 }}"
+        alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
+        loading="eager"
+        width="2000"
+        height="1200"
+      >
+    {%- else -%}
+      <img
+        src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=80"
+        alt="Caperino Furnitures & Interiors Modern Living Space"
+        loading="eager"
+      >
+    {%- endif -%}
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="container hero-content">
+    {%- if section.settings.eyebrow != blank -%}
+      <div class="hero-tagline">{{ section.settings.eyebrow }}</div>
+    {%- endif -%}
+
+    <h1 class="hero-title">{{ section.settings.heading }}</h1>
+
+    {%- if section.settings.subheading != blank -%}
+      <p class="hero-text">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    <div class="hero-cta-group">
+      {%- if section.settings.button_1_text != blank -%}
+        <a href="{{ section.settings.button_1_link | default: '/collections/furniture' }}" class="btn btn-primary" style="background: #FFFFFF; color: #1D1A16; border-color: #FFFFFF;">
+          {{ section.settings.button_1_text }}
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.button_2_text != blank -%}
+        <a href="{{ section.settings.button_2_link | default: '/collections/all' }}" class="btn btn-outline-white">
+          {{ section.settings.button_2_text }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero background image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow tag",
+      "default": "Handcrafted Living & Interiors"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Hero headline",
+      "default": "Furniture That Transforms Your Space"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Supporting text",
+      "default": "Discover furniture and interior pieces designed to bring comfort, character and style into your home."
+    },
+    {
+      "type": "text",
+      "id": "button_1_text",
+      "label": "Primary button text",
+      "default": "Shop Furniture"
+    },
+    {
+      "type": "url",
+      "id": "button_1_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "button_2_text",
+      "label": "Secondary button text",
+      "default": "Explore Collections"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Secondary button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,129 @@
+<section class="section-spacing" aria-label="Frequently Asked Questions">
+  <div class="container container-narrow">
+    <div class="section-header text-center" style="margin-bottom: 3.5rem;">
+      <span class="section-eyebrow">Assistance &amp; Support</span>
+      <h1 class="section-title">Frequently Asked Questions</h1>
+      <p class="section-subtitle">
+        Find answers to common questions about ordering, product dimensions, finishes, and customer care.
+      </p>
+    </div>
+
+    <div class="faq-accordion-list" style="display: flex; flex-direction: column; gap: 1rem;">
+      {%- for block in section.blocks -%}
+        <div class="faq-item" style="border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; background: #FFFFFF;" {{ block.shopify_attributes }}>
+          <button
+            type="button"
+            class="accordion-trigger"
+            aria-expanded="false"
+            style="width: 100%; text-align: left; padding: 1.25rem 1.5rem; background: none; border: none; font-family: var(--font-heading); font-size: 1.25rem; color: var(--color-text-main); font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem;"
+          >
+            <span>{{ block.settings.question }}</span>
+            <span style="font-size: 1.4rem; line-height: 1; color: var(--color-accent);">&#43;</span>
+          </button>
+          <div hidden style="padding: 0 1.5rem 1.5rem; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; border-top: 1px solid var(--color-surface-warm);">
+            <div style="padding-top: 1rem;">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div style="text-align: center; margin-top: 3.5rem; padding: 2rem; background: var(--color-surface-warm); border-radius: 4px;">
+      <h3 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.5rem;">Still have questions?</h3>
+      <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.25rem;">
+        Contact our team directly at +92 300 9630392 or visit our showroom on Main Vehari Road, Multan.
+      </p>
+      <a href="/pages/contact" class="btn btn-primary">Contact Support</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Page",
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How can I place an order?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Select your desired furniture pieces, choose any available color or size variants, and click 'Add to Cart'. You can then proceed through our secure Shopify checkout to finalize your customer information and order details.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Page",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I place an order?",
+            "answer": "<p>Select your desired furniture or interior pieces, choose variants (such as finish or size), and click 'Add to Cart'. When you are ready, proceed to our secure Shopify checkout to enter your contact, delivery, and payment information.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I check furniture dimensions?",
+            "answer": "<p>Each product detail page contains an exact 'Dimensions & Product Details' section displaying the Width, Height, Depth, and Weight configured for that piece. Please measure your room and doorway clearances before ordering.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are furniture colors and finishes customizable?",
+            "answer": "<p>Many of our furniture items can be customized in terms of wood polish, fabric type, or upholstery color. Please contact our team at +92 300 9630392 or visit our Multan showroom to discuss custom orders.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I check product availability?",
+            "answer": "<p>Real-time stock and availability are indicated directly on each product card and product details page. If an item displays 'Sold Out', you may reach out to inquire about lead times for made-to-order production.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer delivery?",
+            "answer": "<p>Delivery arrangements, areas served, and shipping rates are managed through Shopify checkout and can be confirmed with our team depending on order destination and furniture size.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer installation?",
+            "answer": "<p>Installation and on-site assembly depend on the specific product and delivery destination. Please inquire with our Multan store team at the time of your order for availability and arrangements.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>Please review our official Return & Refund Policy page for full details regarding returns, inspection on delivery, and exchange guidelines.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I contact Caperino Furnitures & Interiors?",
+            "answer": "<p>You can call or WhatsApp us at +92 300 9630392, submit a message via our Contact page, or visit our showroom at Main Vehari Road, near Chungi No. 22, Timber Market, Multan, Punjab, Pakistan.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

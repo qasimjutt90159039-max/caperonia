@@ -1,0 +1,77 @@
+<section class="section-spacing newsletter-section" aria-label="Newsletter Subscription">
+  <div class="container">
+    <div style="max-width: 640px; margin: 0 auto; text-align: center;">
+      <span class="section-eyebrow" style="color: #E2CEB9;">{{ section.settings.eyebrow | default: 'Stay Connected' }}</span>
+      <h2 class="newsletter-title">{{ section.settings.heading | default: 'Get Interior Inspiration' }}</h2>
+      <p class="newsletter-desc">
+        {{ section.settings.subheading | default: 'Subscribe to receive seasonal furniture arrivals, interior styling guides, and collection previews.' }}
+      </p>
+
+      {% form 'customer', class: 'newsletter-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {%- if form.posted_successfully? -%}
+          <div style="background: rgba(58, 105, 75, 0.2); border: 1px solid var(--color-success); color: #fff; padding: 1rem; border-radius: 4px; width: 100%; text-align: center;">
+            Thank you for subscribing to Caperino interior inspiration!
+          </div>
+        {%- else -%}
+          {%- if form.errors -%}
+            <div style="color: #FF8080; margin-bottom: 0.75rem; font-size: 0.85rem; width: 100%;">
+              {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+            </div>
+          {%- endif -%}
+
+          <input
+            type="email"
+            name="contact[email]"
+            class="newsletter-input"
+            value="{{ form.email }}"
+            placeholder="Enter your email address"
+            aria-label="Email Address"
+            required
+            autocomplete="email"
+          >
+          <button type="submit" class="btn btn-primary newsletter-btn" style="background: var(--color-accent); border-color: var(--color-accent);">
+            {{ section.settings.button_text | default: 'Subscribe' }}
+          </button>
+        {%- endif -%}
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow tag",
+      "default": "Stay Connected"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get Interior Inspiration"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Subscribe to receive seasonal furniture arrivals, interior styling guides, and collection previews."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Subscribe"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+{%- comment -%}
+  Renders pagination controls
+  Usage:
+  {% render 'pagination', paginate: paginate %}
+{%- endcomment -%}
+
+{%- if paginate.parts.size > 0 -%}
+  <nav class="pagination-wrapper" role="navigation" aria-label="Pagination" style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 3.5rem;">
+    {%- if paginate.previous -%}
+      <a href="{{ paginate.previous.url }}" class="btn btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;" aria-label="Previous page">
+        &larr; Previous
+      </a>
+    {%- endif -%}
+
+    {%- for part in paginate.parts -%}
+      {%- if part.is_link -%}
+        <a href="{{ part.url }}" class="btn btn-secondary" style="padding: 0.6rem 1rem; font-size: 0.8rem;">{{ part.title }}</a>
+      {%- else -%}
+        {%- if part.title == paginate.current_page -%}
+          <span class="btn btn-primary" style="padding: 0.6rem 1rem; font-size: 0.8rem;" aria-current="page">{{ part.title }}</span>
+        {%- else -%}
+          <span style="display: inline-flex; align-items: center; padding: 0.6rem 0.8rem;">{{ part.title }}</span>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if paginate.next -%}
+      <a href="{{ paginate.next.url }}" class="btn btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;" aria-label="Next page">
+        Next &rarr;
+      </a>
+    {%- endif -%}
+  </nav>
+{%- endif -%}

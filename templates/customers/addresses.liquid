@@ -1,0 +1,98 @@
+<section class="section-spacing" aria-label="Customer Addresses">
+  <div class="container container-narrow">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <a href="{{ routes.account_url }}" class="btn-link" style="font-size: 0.8rem; margin-bottom: 0.5rem; display: inline-block;">&larr; Back to Account</a>
+        <h1 style="font-size: 2.4rem; margin-bottom: 0;">Manage Addresses</h1>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="document.getElementById('AddAddressForm').style.display = document.getElementById('AddAddressForm').style.display === 'none' ? 'block' : 'none';">
+        Add New Address
+      </button>
+    </div>
+
+    <!-- Add Address Form -->
+    <div id="AddAddressForm" style="display: none; background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 4px; padding: 2rem; margin-bottom: 3rem;">
+      <h2 style="font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 1.5rem;">Add Address</h2>
+      {% form 'customer_address', customer.new_address %}
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <label style="display: block; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 0.35rem;">First Name</label>
+            <input type="text" name="address[first_name]" value="{{ form.first_name }}" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border);">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 0.35rem;">Last Name</label>
+            <input type="text" name="address[last_name]" value="{{ form.last_name }}" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border);">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 0.35rem;">Address Line 1</label>
+          <input type="text" name="address[address1]" value="{{ form.address1 }}" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border);">
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 0.35rem;">Address Line 2 (Optional)</label>
+          <input type="text" name="address[address2]" value="{{ form.address2 }}" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border);">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <label style="display: block; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 0.35rem;">City</label>
+            <input type="text" name="address[city]" value="{{ form.city }}" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border);">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 0.35rem;">Postal / ZIP Code</label>
+            <input type="text" name="address[zip]" value="{{ form.zip }}" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border);">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin-bottom: 0.35rem;">Phone Number</label>
+          <input type="tel" name="address[phone]" value="{{ form.phone }}" style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border);">
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          {{ form.set_as_default_checkbox }}
+          <label for="address_default_address_{{ form.id }}" style="font-size: 0.88rem; margin-left: 0.35rem;">Set as default delivery address</label>
+        </div>
+
+        <div style="display: flex; gap: 1rem;">
+          <button type="submit" class="btn btn-primary">Save Address</button>
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('AddAddressForm').style.display='none';">Cancel</button>
+        </div>
+      {% endform %}
+    </div>
+
+    <!-- Address Cards -->
+    <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+      {%- for address in customer.addresses -%}
+        <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 4px; padding: 1.75rem; position: relative;">
+          {%- if address == customer.default_address -%}
+            <span class="product-badge badge-new" style="position: absolute; top: 1.5rem; right: 1.5rem;">Default</span>
+          {%- endif -%}
+
+          <div style="font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.25rem;">
+            <strong>{{ address.name }}</strong><br>
+            {{ address.address1 }}<br>
+            {%- if address.address2 != blank -%}{{ address.address2 }}<br>{%- endif -%}
+            {{ address.city }}, {{ address.province_code }} {{ address.zip }}<br>
+            {{ address.country }}<br>
+            {%- if address.phone != blank -%}{{ address.phone }}{%- endif -%}
+          </div>
+
+          <form
+            class="address-delete-form"
+            method="post"
+            action="/account/addresses/{{ address.id }}"
+            onsubmit="return confirm('Are you sure you want to remove this address?');"
+          >
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" class="btn-link" style="color: var(--color-sale); font-size: 0.82rem; background: none; border: none; cursor: pointer;">
+              Delete Address
+            </button>
+          </form>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>

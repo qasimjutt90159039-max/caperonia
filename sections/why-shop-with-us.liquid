@@ -1,0 +1,143 @@
+<section class="section-spacing" style="background-color: var(--color-bg); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);" aria-label="Why Shop With Us">
+  <div class="container">
+    <div class="section-header text-center">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="section-eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      <h2 class="section-title">{{ section.settings.heading | default: 'Why Shop With Caperino' }}</h2>
+      {%- if section.settings.subheading != blank -%}
+        <p class="section-subtitle">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="benefits-grid">
+      {%- for block in section.blocks -%}
+        <div class="benefit-card" {{ block.shopify_attributes }}>
+          <div class="benefit-icon">
+            {%- case block.settings.icon -%}
+              {%- when 'cart' -%}
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              {%- when 'styles' -%}
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+              {%- when 'interior' -%}
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+              {%- when 'security' -%}
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              {%- else -%}
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M5 13l4 4L19 7" />
+                </svg>
+            {%- endcase -%}
+          </div>
+          <h3 class="benefit-title">{{ block.settings.title }}</h3>
+          <p class="benefit-text">{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Shop With Us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow tag",
+      "default": "The Caperino Experience"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Shop With Us"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "We bring thoughtful furniture design and curated interior products to your doorstep."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Block",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "cart", "label": "Shopping Bag" },
+            { "value": "styles", "label": "Styles / Grid" },
+            { "value": "interior", "label": "Interior / Home" },
+            { "value": "security", "label": "Shield / Security" }
+          ],
+          "default": "cart"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Easy Online Shopping"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Browse high-resolution photographs, detailed dimensions, and variant options from the comfort of your home."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Shop With Us",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "cart",
+            "title": "Easy Online Shopping",
+            "text": "Browse high-resolution photographs, detailed dimensions, and variant options from the comfort of your home."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "styles",
+            "title": "Multiple Furniture Styles",
+            "text": "From clean contemporary lines to warm classic silhouettes, discover pieces tailored to your personal aesthetic."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "interior",
+            "title": "Home & Interior Products",
+            "text": "Complete your space with wall paneling, modern lighting, and hand-selected decorative accessories."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "security",
+            "title": "Secure Shopify Checkout",
+            "text": "Your order information and transactions are encrypted and processed safely through certified Shopify checkout."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

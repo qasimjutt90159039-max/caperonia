@@ -1,0 +1,101 @@
+{%- comment -%}
+  Renders variant-picker options for product details page
+  Usage:
+  {% render 'product-variant-picker', product: product %}
+{%- endcomment -%}
+
+{%- unless product.has_only_default_variant -%}
+  <div class="variant-picker-wrapper" data-section="{{ section.id }}">
+    {%- for option in product.options_with_values -%}
+      <fieldset class="variant-option-group">
+        <legend class="variant-option-title">
+          <span>{{ option.name }}: <strong class="selected-option-value">{{ option.selected_value }}</strong></span>
+        </legend>
+        <div class="variant-swatches">
+          {%- for value in option.values -%}
+            <label class="swatch-label">
+              <input
+                type="radio"
+                name="option-{{ option.position }}"
+                value="{{ value | escape }}"
+                id="Option-{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                {% if option.selected_value == value %}checked{% endif %}
+                style="position: absolute; opacity: 0; pointer-events: none;"
+                class="variant-radio-input"
+                data-option-position="{{ option.position }}"
+              >
+              <span class="swatch-btn {% if option.selected_value == value %}is-active{% endif %}">
+                {{ value }}
+              </span>
+            </label>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+    {%- endfor -%}
+
+    <script type="application/json" class="product-variants-json">
+      {{ product.variants | json }}
+    </script>
+  </div>
+
+  <script>
+    (function() {
+      const wrapper = document.querySelector('.variant-picker-wrapper[data-section="{{ section.id }}"]');
+      if (!wrapper) return;
+
+      const variantsJsonEl = wrapper.querySelector('.product-variants-json');
+      if (!variantsJsonEl) return;
+      const variants = JSON.parse(variantsJsonEl.textContent);
+
+      const radios = wrapper.querySelectorAll('.variant-radio-input');
+      radios.forEach(radio => {
+        radio.addEventListener('change', () => {
+          // Update visual active state
+          const fieldset = radio.closest('.variant-option-group');
+          fieldset.querySelectorAll('.swatch-btn').forEach(btn => btn.classList.remove('is-active'));
+          radio.parentElement.querySelector('.swatch-btn').classList.add('is-active');
+          const titleVal = fieldset.querySelector('.selected-option-value');
+          if (titleVal) titleVal.textContent = radio.value;
+
+          // Find matching variant
+          const selectedOptions = Array.from(wrapper.querySelectorAll('.variant-radio-input:checked')).map(r => r.value);
+          const matchedVariant = variants.find(variant => {
+            return variant.options.every((opt, idx) => opt === selectedOptions[idx]);
+          });
+
+          if (matchedVariant) {
+            const masterInput = document.querySelector('input[name="id"]');
+            if (masterInput) masterInput.value = matchedVariant.id;
+
+            const priceEl = document.querySelector('.pdp-price');
+            if (priceEl) priceEl.textContent = `Rs. ${(matchedVariant.price / 100).toLocaleString()}`;
+
+            const comparePriceEl = document.querySelector('.pdp-compare-price');
+            if (comparePriceEl) {
+              if (matchedVariant.compare_at_price > matchedVariant.price) {
+                comparePriceEl.textContent = `Rs. ${(matchedVariant.compare_at_price / 100).toLocaleString()}`;
+                comparePriceEl.style.display = 'inline';
+              } else {
+                comparePriceEl.style.display = 'none';
+              }
+            }
+
+            const atcBtn = document.querySelector('.btn-add-to-cart-main');
+            if (atcBtn) {
+              if (matchedVariant.available) {
+                atcBtn.removeAttribute('disabled');
+                atcBtn.textContent = 'Add to Cart';
+              } else {
+                atcBtn.setAttribute('disabled', 'disabled');
+                atcBtn.textContent = 'Sold Out';
+              }
+            }
+
+            // Dispatch event for media gallery sync
+            document.dispatchEvent(new CustomEvent('variant:change', { detail: { variant: matchedVariant } }));
+          }
+        });
+      });
+    })();
+  </script>
+{%- endunless -%}

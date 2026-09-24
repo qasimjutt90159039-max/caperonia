@@ -1,0 +1,152 @@
+<section class="section-spacing" style="background-color: var(--color-bg);" aria-label="Interior Products">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-eyebrow">{{ section.settings.eyebrow | default: 'Architectural Surfaces' }}</span>
+      <h2 class="section-title">{{ section.settings.heading | default: 'Interior Products & Wall Panels' }}</h2>
+      <p class="section-subtitle">
+        {{ section.settings.subheading | default: 'Transform bare walls and interiors with architectural wall panels, decorative acoustic slats, fluted PVC, and specialty ceiling elements.' }}
+      </p>
+    </div>
+
+    <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+      {%- for block in section.blocks -%}
+        <div class="category-card" {{ block.shopify_attributes }}>
+          <div class="category-card-media" style="aspect-ratio: 1/1;">
+            {%- if block.settings.image != blank -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                alt="{{ block.settings.title | escape }}"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            {%- elsif block.settings.fallback_image != blank -%}
+              <img
+                src="{{ block.settings.fallback_image }}"
+                alt="{{ block.settings.title | escape }}"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag }}
+            {%- endif -%}
+            <div class="category-card-overlay"></div>
+          </div>
+          <div class="category-card-content">
+            <h3 class="category-card-title">{{ block.settings.title }}</h3>
+            {%- if block.settings.description != blank -%}
+              <p style="font-size: 0.8rem; color: rgba(255,255,255,0.8); margin-bottom: 0.5rem;">{{ block.settings.description }}</p>
+            {%- endif -%}
+            <a href="{{ block.settings.link | default: '/collections/interior-products' }}" class="category-card-link">
+              Explore Products &rarr;
+            </a>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Interior Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow tag",
+      "default": "Architectural Surfaces"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Interior Products & Wall Panels"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Transform bare walls and interiors with architectural wall panels, decorative acoustic slats, fluted PVC, and specialty ceiling elements."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "interior_category",
+      "name": "Interior Product Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Wooden Panels"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Short description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_image",
+          "label": "Fallback Image URL"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Interior Products",
+      "blocks": [
+        {
+          "type": "interior_category",
+          "settings": {
+            "title": "Wooden Wall Panels",
+            "description": "Fluted oak, teak, and slat paneling for warm acoustic elegance.",
+            "fallback_image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+            "link": "/collections/interior-products"
+          }
+        },
+        {
+          "type": "interior_category",
+          "settings": {
+            "title": "PVC & Fluted Panels",
+            "description": "Durable, moisture-resistant modern fluted finishes.",
+            "fallback_image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80",
+            "link": "/collections/interior-products"
+          }
+        },
+        {
+          "type": "interior_category",
+          "settings": {
+            "title": "Decorative Panels",
+            "description": "Textured feature wall paneling and 3D architectural profiles.",
+            "fallback_image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80",
+            "link": "/collections/interior-products"
+          }
+        },
+        {
+          "type": "interior_category",
+          "settings": {
+            "title": "Wallpapers & Textures",
+            "description": "Linen, subtle grasscloth, and contemporary pattern finishes.",
+            "fallback_image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+            "link": "/collections/interior-products"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

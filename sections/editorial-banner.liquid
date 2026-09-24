@@ -1,0 +1,93 @@
+<section class="section-spacing" style="padding-top: 0; padding-bottom: 0;" aria-label="Editorial Showcase">
+  <div style="position: relative; min-height: 520px; display: flex; align-items: center; justify-content: center; background-color: var(--color-dark-bg); overflow: hidden;">
+    <div style="position: absolute; inset: 0; z-index: 1;">
+      {%- if section.settings.image != blank -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 2000 }}"
+          alt="{{ section.settings.heading | escape }}"
+          loading="lazy"
+          style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.72);"
+        >
+      {%- else -%}
+        <img
+          src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2000&q=80"
+          alt="Make Your Space Your Own"
+          loading="lazy"
+          style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.72);"
+        >
+      {%- endif -%}
+    </div>
+    <div style="position: absolute; inset: 0; background: rgba(27, 24, 21, 0.45); z-index: 2;"></div>
+
+    <div class="container" style="position: relative; z-index: 3; text-align: center; color: #FFFFFF; max-width: 720px; padding: 4rem 1.5rem;">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="section-eyebrow" style="color: #E2CEB9;">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      <h2 style="font-size: clamp(2.4rem, 4.5vw, 3.6rem); color: #FFFFFF; margin-bottom: 1.25rem;">
+        {{ section.settings.heading | default: 'Make Your Space Your Own' }}
+      </h2>
+      <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; line-height: 1.65; margin-bottom: 2rem;">
+        {{ section.settings.subheading | default: 'Explore furniture and interior pieces for living, dining, bedroom and everyday spaces.' }}
+      </p>
+
+      {%- liquid
+        assign coll_url = section.settings.button_link | default: section.settings.collection.url | default: '/collections/all'
+      -%}
+      <a href="{{ coll_url }}" class="btn btn-primary" style="background: #FFFFFF; color: #1D1A16; border-color: #FFFFFF;">
+        {{ section.settings.button_text | default: 'Shop Collection' }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Editorial Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner Background Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow tag",
+      "default": "Interior Philosophy"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Headline",
+      "default": "Make Your Space Your Own"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Supporting text",
+      "default": "Explore furniture and interior pieces for living, dining, bedroom and everyday spaces."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Configurable Collection"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Custom Button Link (Overrides collection URL)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial Banner"
+    }
+  ]
+}
+{% endschema %}

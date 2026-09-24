@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caperino Furnitures &amp; Interiors &ndash; Multan, Pakistan</title>
+  
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/theme.css">
+
+  <style>
+    /* Preview Quick Switcher Bar */
+    .preview-bar {
+      background: #111;
+      color: #EDE8E1;
+      font-size: 0.78rem;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      border-bottom: 1px solid #333;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .preview-bar span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .preview-bar .badge {
+      background: var(--color-accent);
+      color: #fff;
+      padding: 2px 7px;
+      border-radius: 2px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .preview-nav-pills {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+    .preview-nav-pills button {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #EDE8E1;
+      padding: 3px 8px;
+      border-radius: 2px;
+      font-size: 0.72rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .preview-nav-pills button:hover, .preview-nav-pills button.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #FFFFFF;
+    }
+    .page-view {
+      display: none;
+      animation: fadeInView 0.25s ease-in-out;
+    }
+    .page-view.active {
+      display: block;
+    }
+    @keyframes fadeInView {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .page-breadcrumb {
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .page-breadcrumb a {
+      color: var(--color-text-muted);
+      text-decoration: underline;
+    }
+    .page-breadcrumb a:hover {
+      color: var(--color-accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Dev / Quick Page Navigator Bar -->
+  <div class="preview-bar">
+    <span>
+      <span class="badge">Shopify OS 2.0</span>
+      <strong>Caperino Furnitures &amp; Interiors</strong> &bull; Quick Page Switcher:
+    </span>
+    <div class="preview-nav-pills">
+      <button class="active" data-page-btn="home" onclick="switchView('home', this)">Home</button>
+      <button data-page-btn="shop" onclick="switchView('shop', this)">Shop All</button>
+      <button data-page-btn="furniture" onclick="switchView('furniture', this)">Furniture</button>
+      <button data-page-btn="living-room" onclick="switchView('living-room', this)">Living Room</button>
+      <button data-page-btn="bedroom" onclick="switchView('bedroom', this)">Bedroom</button>
+      <button data-page-btn="dining" onclick="switchView('dining', this)">Dining</button>
+      <button data-page-btn="home-decor" onclick="switchView('home-decor', this)">Home Decor</button>
+      <button data-page-btn="interior" onclick="switchView('interior', this)">Interior Panels</button>
+      <button data-page-btn="new-arrivals" onclick="switchView('new-arrivals', this)">New Arrivals</button>
+      <button data-page-btn="contact" onclick="switchView('contact', this)">Contact</button>
+      <button data-page-btn="about" onclick="switchView('about', this)">About</button>
+      <button data-page-btn="faq" onclick="switchView('faq', this)">FAQ</button>
+      <button data-page-btn="services" onclick="switchView('services', this)">Services</button>
+      <button data-page-btn="inspiration" onclick="switchView('inspiration', this)">Inspiration</button>
+      <button data-page-btn="cart" onclick="switchView('cart', this)">Cart Page</button>
+    </div>
+  </div>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
+      <span>Transform Your Space With Beautiful Furniture</span>
+      <a href="javascript:void(0)" onclick="switchView('new-arrivals')" style="color: #EDE8E1; text-decoration: underline;">Explore New Arrivals &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Sticky Header with Every Distinct Page Linked -->
+  <header class="site-header">
+    <div class="container header-wrapper">
+      <button type="button" class="header-hamburger" onclick="openMobileNav()" aria-label="Open mobile navigation">
+        <svg style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <div class="header-logo">
+        <a href="javascript:void(0)" onclick="switchView('home')">
+          <span class="brand-name">Caperino</span>
+          <span class="brand-tagline">Furnitures &amp; Interiors</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation - All 10 Distinct Links -->
+      <nav class="header-nav">
+        <a href="javascript:void(0)" onclick="switchView('home')" class="nav-link is-active" data-nav="home">Home</a>
+        <a href="javascript:void(0)" onclick="switchView('shop')" class="nav-link" data-nav="shop">Shop</a>
+        <a href="javascript:void(0)" onclick="switchView('furniture')" class="nav-link" data-nav="furniture">Furniture</a>
+        <a href="javascript:void(0)" onclick="switchView('living-room')" class="nav-link" data-nav="living-room">Living Room</a>
+        <a href="javascript:void(0)" onclick="switchView('bedroom')" class="nav-link" data-nav="bedroom">Bedroom</a>
+        <a href="javascript:void(0)" onclick="switchView('dining')" class="nav-link" data-nav="dining">Dining</a>
+        <a href="javascript:void(0)" onclick="switchView('home-decor')" class="nav-link" data-nav="home-decor">Home Decor</a>
+        <a href="javascript:void(0)" onclick="switchView('interior')" class="nav-link" data-nav="interior">Interior</a>
+        <a href="javascript:void(0)" onclick="switchView('new-arrivals')" class="nav-link" data-nav="new-arrivals">New Arrivals</a>
+        <a href="javascript:void(0)" onclick="switchView('contact')" class="nav-link" data-nav="contact">Contact</a>
+      </nav>
+
+      <!-- Header Action Icons -->
+      <div class="header-actions">
+        <!-- Search Trigger -->
+        <button type="button" class="action-btn" onclick="openSearchModal()" aria-label="Search furniture">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+
+        <!-- Account -->
+        <a href="javascript:void(0)" onclick="showToast('Shopify Native Customer Accounts (/account) enabled.');" class="action-btn" aria-label="Customer Account">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        </a>
+
+        <!-- Wishlist Trigger -->
+        <button type="button" class="action-btn" onclick="openWishlistModal()" aria-label="Wishlist">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          <span class="badge-count wishlist-badge-count" style="display: none;">0</span>
+        </button>
+
+        <!-- Cart Trigger -->
+        <button type="button" class="action-btn header-cart-btn" onclick="openCartDrawer()" aria-label="Shopping Cart">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span class="badge-count cart-badge-count" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu - All Pages Linked Distinctly -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true">
+    <div class="mobile-nav-content">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <span class="brand-name" style="font-size: 1.4rem;">Caperino</span>
+          <span class="brand-tagline" style="display: block; font-size: 0.6rem;">Furnitures &amp; Interiors</span>
+        </div>
+        <button type="button" class="mobile-nav-close" onclick="closeMobileNav()">
+          <svg style="width: 22px; height: 22px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="javascript:void(0)" onclick="switchView('home'); closeMobileNav();">Home</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('shop'); closeMobileNav();">Shop All</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('furniture'); closeMobileNav();">Furniture</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('living-room'); closeMobileNav();">Living Room</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('bedroom'); closeMobileNav();">Bedroom</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('dining'); closeMobileNav();">Dining</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('home-decor'); closeMobileNav();">Home Decor</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('interior'); closeMobileNav();">Interior Products</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('new-arrivals'); closeMobileNav();">New Arrivals</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('contact'); closeMobileNav();">Contact Us</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('about'); closeMobileNav();">About Us</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('faq'); closeMobileNav();">FAQs</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('services'); closeMobileNav();">Interior Services</a></li>
+        <li><a href="javascript:void(0)" onclick="switchView('inspiration'); closeMobileNav();">Design Inspiration</a></li>
+      </ul>
+      <div class="mobile-nav-footer">
+        <div style="font-weight: 600; color: var(--color-text-main); margin-bottom: 4px;">Multan Showroom:</div>
+        <p style="font-size: 0.8rem; margin-bottom: 6px;">Main Vehari Road, near Chungi No. 22, Timber Market, Multan</p>
+        <a href="tel:+923009630392" style="font-weight: 600; color: var(--color-accent);">+92 300 9630392</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 1. PAGE: HOME ==================== -->
+  <div id="view-home" class="page-view active">
+    <!-- Hero Banner -->
+    <section class="hero-section">
+      <div class="hero-bg-media">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=80" alt="Caperino Living Room" loading="eager">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <div class="hero-tagline">Handcrafted Living &amp; Interiors</div>
+        <h1 class="hero-title">Furniture That Transforms Your Space</h1>
+        <p class="hero-text">
+          Discover furniture and interior pieces designed to bring comfort, character and style into your home.
+        </p>
+        <div class="hero-cta-group">
+          <a href="javascript:void(0)" onclick="switchView('furniture')" class="btn btn-primary" style="background: #FFFFFF; color: #1D1A16; border-color: #FFFFFF;">
+            Shop Furniture
+          </a>
+          <a href="javascript:void(0)" onclick="switchView('shop')" class="btn btn-outline-white">
+            Explore Collections
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop By Category Cards -->
+    <section class="section-spacing" style="background-color: var(--color-bg);">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Curated Collections</span>
+          <h2 class="section-title">Shop By Category</h2>
+          <p class="section-subtitle">Explore our curated furniture and interior design collections for every space.</p>
+        </div>
+        <div class="category-grid">
+          <a href="javascript:void(0)" onclick="switchView('living-room')" class="category-card">
+            <div class="category-card-media">
+              <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=80" alt="Living Room" loading="lazy">
+              <div class="category-card-overlay"></div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">Living Room</h3>
+              <span class="category-card-link">Explore Collection &rarr;</span>
+            </div>
+          </a>
+
+          <a href="javascript:void(0)" onclick="switchView('bedroom')" class="category-card">
+            <div class="category-card-media">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80" alt="Bedroom" loading="lazy">
+              <div class="category-card-overlay"></div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">Bedroom</h3>
+              <span class="category-card-link">Explore Collection &rarr;</span>
+            </div>
+          </a>
+
+          <a href="javascript:void(0)" onclick="switchView('dining')" class="category-card">
+            <div class="category-card-media">
+              <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=700&q=80" alt="Dining Room" loading="lazy">
+              <div class="category-card-overlay"></div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">Dining Room</h3>
+              <span class="category-card-link">Explore Collection &rarr;</span>
+            </div>
+          </a>
+
+          <a href="javascript:void(0)" onclick="switchView('furniture')" class="category-card">
+            <div class="category-card-media">
+              <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=700&q=80" alt="Office Furniture" loading="lazy">
+              <div class="category-card-overlay"></div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">Office</h3>
+              <span class="category-card-link">Explore Collection &rarr;</span>
+            </div>
+          </a>
+
+          <a href="javascript:void(0)" onclick="switchView('home-decor')" class="category-card">
+            <div class="category-card-media">
+              <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80" alt="Home Decor" loading="lazy">
+              <div class="category-card-overlay"></div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">Home Decor</h3>
+              <span class="category-card-link">Explore Collection &rarr;</span>
+            </div>
+          </a>
+
+          <a href="javascript:void(0)" onclick="switchView('shop')" class="category-card">
+            <div class="category-card-media">
+              <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80" alt="Lighting" loading="lazy">
+              <div class="category-card-overlay"></div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">Lighting</h3>
+              <span class="category-card-link">Explore Collection &rarr;</span>
+            </div>
+          </a>
+
+          <a href="javascript:void(0)" onclick="switchView('shop')" class="category-card">
+            <div class="category-card-media">
+              <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=700&q=80" alt="Rugs" loading="lazy">
+              <div class="category-card-overlay"></div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">Rugs</h3>
+              <span class="category-card-link">Explore Collection &rarr;</span>
+            </div>
+          </a>
+
+          <a href="javascript:void(0)" onclick="switchView('interior')" class="category-card">
+            <div class="category-card-media">
+              <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=700&q=80" alt="Interior Panels" loading="lazy">
+              <div class="category-card-overlay"></div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">Interior Panels</h3>
+              <span class="category-card-link">Explore Collection &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Furniture Showcase -->
+    <section class="section-spacing" style="background-color: var(--color-surface);">
+      <div class="container">
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; margin-bottom: clamp(2rem, 4vw, 3.5rem); gap: 1rem;">
+          <div>
+            <span class="section-eyebrow">Signature Craftsmanship</span>
+            <h2 class="section-title" style="margin-bottom: 0.25rem;">Featured Furniture</h2>
+            <p style="color: var(--color-text-muted); font-size: 1rem;">Sofa sets, coffee tables, beds, wardrobes, dining sets and console tables.</p>
+          </div>
+          <a href="javascript:void(0)" onclick="switchView('shop')" class="btn-link">View All Furniture &rarr;</a>
+        </div>
+        <div class="product-grid" id="home-featured-grid"></div>
+      </div>
+    </section>
+
+    <!-- Why Shop With Us -->
+    <section class="section-spacing" style="background-color: var(--color-bg); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">The Caperino Experience</span>
+          <h2 class="section-title">Why Shop With Us</h2>
+          <p class="section-subtitle">We bring thoughtful furniture design and curated interior products to your doorstep.</p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            </div>
+            <h3 class="benefit-title">Easy Online Shopping</h3>
+            <p class="benefit-text">Browse high-resolution photographs, detailed dimensions, and variant options from the comfort of your home.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            </div>
+            <h3 class="benefit-title">Multiple Furniture Styles</h3>
+            <p class="benefit-text">From clean contemporary lines to warm classic silhouettes, discover pieces tailored to your personal aesthetic.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            </div>
+            <h3 class="benefit-title">Home &amp; Interior Products</h3>
+            <p class="benefit-text">Complete your space with wall paneling, modern lighting, and hand-selected decorative accessories.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 class="benefit-title">Secure Shopify Checkout</h3>
+            <p class="benefit-text">Your order information and transactions are encrypted and processed safely through certified Shopify checkout.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section-spacing newsletter-section">
+      <div class="container">
+        <div style="max-width: 640px; margin: 0 auto; text-align: center;">
+          <span class="section-eyebrow" style="color: #E2CEB9;">Stay Connected</span>
+          <h2 class="newsletter-title">Get Interior Inspiration</h2>
+          <p class="newsletter-desc">Subscribe to receive seasonal furniture arrivals, interior styling guides, and collection previews.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed to Caperino interior inspiration!'); this.reset();">
+            <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+            <button type="submit" class="btn btn-primary newsletter-btn" style="background: var(--color-accent); border-color: var(--color-accent);">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== 2. PAGE: SHOP (ALL FURNITURE) ==================== -->
+  <div id="view-shop" class="page-view">
+    <div class="container section-spacing-sm">
+      <div class="page-breadcrumb">
+        <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Shop All</span>
+      </div>
+      <div class="collection-header text-center" style="max-width: 760px; margin: 0 auto clamp(1.5rem, 3vw, 2.5rem);">
+        <span class="section-eyebrow">Catalog</span>
+        <h1 style="font-size: clamp(2.4rem, 4.5vw, 3.5rem); margin-bottom: 0.75rem;">All Furniture &amp; Interior Pieces</h1>
+        <p style="color: var(--color-text-muted); font-size: 1.05rem;">
+          Explore our complete collection of handcrafted living, bedroom, dining furniture, wall panels, and lighting.
+        </p>
+      </div>
+
+      <div class="collection-toolbar">
+        <div class="collection-count">Showing all 12 featured pieces</div>
+        <div class="collection-sort-wrap">
+          <label style="font-size: 0.85rem; text-transform: uppercase; font-weight: 600;">Sort By:</label>
+          <select class="sort-select" onchange="sortSpecificGrid('shop-all-grid', this.value)">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="product-grid" id="shop-all-grid"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 3. PAGE: FURNITURE ==================== -->
+  <div id="view-furniture" class="page-view">
+    <div class="container section-spacing-sm">
+      <div class="page-breadcrumb">
+        <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Furniture</span>
+      </div>
+      <div class="collection-header text-center" style="max-width: 760px; margin: 0 auto 2.5rem;">
+        <span class="section-eyebrow">Category</span>
+        <h1 style="font-size: clamp(2.4rem, 4.5vw, 3.5rem); margin-bottom: 0.75rem;">Handcrafted Furniture</h1>
+        <p style="color: var(--color-text-muted); font-size: 1.05rem;">
+          Solid timber frames, premium upholstery, and thoughtful spatial ergonomics crafted for lasting residential comfort.
+        </p>
+      </div>
+      <div class="product-grid" id="furniture-grid"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 4. PAGE: LIVING ROOM ==================== -->
+  <div id="view-living-room" class="page-view">
+    <div class="container section-spacing-sm">
+      <div class="page-breadcrumb">
+        <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <a href="javascript:void(0)" onclick="switchView('furniture')">Furniture</a> / <span>Living Room</span>
+      </div>
+      <div class="collection-header text-center" style="max-width: 760px; margin: 0 auto 2.5rem;">
+        <span class="section-eyebrow">Living Spaces</span>
+        <h1 style="font-size: clamp(2.4rem, 4.5vw, 3.5rem); margin-bottom: 0.75rem;">Living Room Furniture</h1>
+        <p style="color: var(--color-text-muted); font-size: 1.05rem;">
+          Sofas, sectional couches, solid oak coffee tables, and slatted media consoles designed for effortless hospitality.
+        </p>
+      </div>
+      <div class="product-grid" id="living-room-grid"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 5. PAGE: BEDROOM ==================== -->
+  <div id="view-bedroom" class="page-view">
+    <div class="container section-spacing-sm">
+      <div class="page-breadcrumb">
+        <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <a href="javascript:void(0)" onclick="switchView('furniture')">Furniture</a> / <span>Bedroom</span>
+      </div>
+      <div class="collection-header text-center" style="max-width: 760px; margin: 0 auto 2.5rem;">
+        <span class="section-eyebrow">Sanctuary &amp; Rest</span>
+        <h1 style="font-size: clamp(2.4rem, 4.5vw, 3.5rem); margin-bottom: 0.75rem;">Bedroom Furniture</h1>
+        <p style="color: var(--color-text-muted); font-size: 1.05rem;">
+          Solid timber platform beds, soft-close nightstands, dressing vanity tables, and custom sliding wardrobes.
+        </p>
+      </div>
+      <div class="product-grid" id="bedroom-grid"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 6. PAGE: DINING ==================== -->
+  <div id="view-dining" class="page-view">
+    <div class="container section-spacing-sm">
+      <div class="page-breadcrumb">
+        <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <a href="javascript:void(0)" onclick="switchView('furniture')">Furniture</a> / <span>Dining Room</span>
+      </div>
+      <div class="collection-header text-center" style="max-width: 760px; margin: 0 auto 2.5rem;">
+        <span class="section-eyebrow">Gather Around</span>
+        <h1 style="font-size: clamp(2.4rem, 4.5vw, 3.5rem); margin-bottom: 0.75rem;">Dining Room Furniture</h1>
+        <p style="color: var(--color-text-muted); font-size: 1.05rem;">
+          Solid seasoned teak dining tables, ergonomic upholstered dining chairs, and architectural buffet sideboards.
+        </p>
+      </div>
+      <div class="product-grid" id="dining-grid"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 7. PAGE: HOME DECOR ==================== -->
+  <div id="view-home-decor" class="page-view">
+    <div class="container section-spacing-sm">
+      <div class="page-breadcrumb">
+        <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Home Decor</span>
+      </div>
+      <div class="collection-header text-center" style="max-width: 760px; margin: 0 auto 2.5rem;">
+        <span class="section-eyebrow">Finishing Touches</span>
+        <h1 style="font-size: clamp(2.4rem, 4.5vw, 3.5rem); margin-bottom: 0.75rem;">Artisanal Home Decor</h1>
+        <p style="color: var(--color-text-muted); font-size: 1.05rem;">
+          Contemporary brass mirrors, marble accent lamps, sculpted objects, and wall decor to complete your home styling.
+        </p>
+      </div>
+      <div class="product-grid" id="home-decor-grid"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 8. PAGE: INTERIOR ==================== -->
+  <div id="view-interior" class="page-view">
+    <div class="container section-spacing-sm">
+      <div class="page-breadcrumb">
+        <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Interior Products</span>
+      </div>
+      <div class="collection-header text-center" style="max-width: 760px; margin: 0 auto 2.5rem;">
+        <span class="section-eyebrow">Surfaces &amp; Architecture</span>
+        <h1 style="font-size: clamp(2.4rem, 4.5vw, 3.5rem); margin-bottom: 0.75rem;">Interior Products &amp; Wall Panels</h1>
+        <p style="color: var(--color-text-muted); font-size: 1.05rem;">
+          Architectural fluted wood slats, acoustic felt backing panels, PVC profiles, and contemporary wallpaper textures.
+        </p>
+      </div>
+      <div class="product-grid" id="interior-grid"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 9. PAGE: NEW ARRIVALS ==================== -->
+  <div id="view-new-arrivals" class="page-view">
+    <div class="container section-spacing-sm">
+      <div class="page-breadcrumb">
+        <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>New Arrivals</span>
+      </div>
+      <div class="collection-header text-center" style="max-width: 760px; margin: 0 auto 2.5rem;">
+        <span class="section-eyebrow">Fresh In Store</span>
+        <h1 style="font-size: clamp(2.4rem, 4.5vw, 3.5rem); margin-bottom: 0.75rem;">New Arrivals</h1>
+        <p style="color: var(--color-text-muted); font-size: 1.05rem;">
+          Our latest furniture designs, newly selected wood species, and contemporary interior surface releases.
+        </p>
+      </div>
+      <div class="product-grid" id="new-arrivals-grid"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 10. PAGE: CONTACT ==================== -->
+  <div id="view-contact" class="page-view">
+    <section class="section-spacing">
+      <div class="container">
+        <div class="page-breadcrumb">
+          <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Contact Us</span>
+        </div>
+        <div class="section-header text-center" style="max-width: 640px; margin: 0 auto 3.5rem;">
+          <span class="section-eyebrow">Get In Touch</span>
+          <h1 class="section-title">Contact Us</h1>
+          <p class="section-subtitle">
+            Have questions regarding our furniture collections, custom orders, or interior pieces? Reach out to our team in Multan.
+          </p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 4rem); max-width: 1040px; margin: 0 auto;" class="contact-grid-wrap">
+          <div style="background: var(--color-surface-warm); padding: 2.5rem; border-radius: 4px; display: flex; flex-direction: column; gap: 1.5rem;">
+            <h2 style="font-family: var(--font-heading); font-size: 1.75rem;">Caperino Furnitures &amp; Interiors</h2>
+            <div>
+              <strong style="display: block; font-size: 0.85rem; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.35rem;">
+                Showroom &amp; Timber Market Location:
+              </strong>
+              <p style="color: var(--color-text-main); font-size: 1rem; line-height: 1.6;">
+                Main Vehari Road, near Chungi No. 22,<br>
+                Timber Market, Multan,<br>
+                Punjab, Pakistan
+              </p>
+            </div>
+            <div>
+              <strong style="display: block; font-size: 0.85rem; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.35rem;">
+                Phone / WhatsApp:
+              </strong>
+              <a href="tel:+923009630392" style="color: var(--color-text-main); font-size: 1.15rem; font-weight: 600;">
+                +92 300 9630392
+              </a>
+            </div>
+            <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--color-border); font-size: 0.88rem; color: var(--color-text-muted);">
+              Visit our Multan showroom to inspect wood finishes, fabrics, and custom interior solutions in person.
+            </div>
+          </div>
+
+          <div style="background: #FFFFFF; border: 1px solid var(--color-border); padding: 2.5rem; border-radius: 4px;">
+            <h2 style="font-family: var(--font-heading); font-size: 1.75rem; margin-bottom: 1.25rem;">Send a Message</h2>
+            <form onsubmit="event.preventDefault(); showToast('Thank you! Message sent to Caperino team.'); this.reset();">
+              <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                <div>
+                  <label style="display: block; font-size: 0.82rem; text-transform: uppercase; font-weight: 600; margin-bottom: 0.4rem;">Your Name *</label>
+                  <input type="text" required style="width: 100%; padding: 0.85rem; border: 1px solid var(--color-border); border-radius: 2px;">
+                </div>
+                <div>
+                  <label style="display: block; font-size: 0.82rem; text-transform: uppercase; font-weight: 600; margin-bottom: 0.4rem;">Email Address *</label>
+                  <input type="email" required style="width: 100%; padding: 0.85rem; border: 1px solid var(--color-border); border-radius: 2px;">
+                </div>
+                <div>
+                  <label style="display: block; font-size: 0.82rem; text-transform: uppercase; font-weight: 600; margin-bottom: 0.4rem;">Phone Number</label>
+                  <input type="tel" placeholder="+92 300 0000000" style="width: 100%; padding: 0.85rem; border: 1px solid var(--color-border); border-radius: 2px;">
+                </div>
+                <div>
+                  <label style="display: block; font-size: 0.82rem; text-transform: uppercase; font-weight: 600; margin-bottom: 0.4rem;">Message *</label>
+                  <textarea rows="4" required placeholder="Tell us about the pieces you are interested in..." style="width: 100%; padding: 0.85rem; border: 1px solid var(--color-border); border-radius: 2px;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="padding: 1rem 2rem;">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== 11. PAGE: ABOUT ==================== -->
+  <div id="view-about" class="page-view">
+    <section class="section-spacing">
+      <div class="container container-narrow">
+        <div class="page-breadcrumb">
+          <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>About Us</span>
+        </div>
+        <div class="section-header text-center" style="margin-bottom: 3.5rem;">
+          <span class="section-eyebrow">Our Story</span>
+          <h1 class="section-title">About Caperino Furnitures &amp; Interiors</h1>
+        </div>
+        <div style="aspect-ratio: 16/9; overflow: hidden; border-radius: 4px; margin-bottom: 3rem; background: var(--color-surface-warm);">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=80" alt="Caperino Furnitures" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="rte" style="font-size: 1.12rem; line-height: 1.8; color: var(--color-text-main);">
+          <p style="font-size: 1.25rem; font-family: var(--font-heading); margin-bottom: 1.5rem; line-height: 1.5;">
+            <strong>Caperino Furnitures &amp; Interiors</strong> is a furniture and interior-focused business based in Multan, offering customers a convenient way to explore furniture and interior products online.
+          </p>
+          <p style="margin-bottom: 1.5rem; color: var(--color-text-muted);">
+            Located on Main Vehari Road near Chungi No. 22 in the Multan Timber Market, our business focuses on quality woodwork, functional living pieces, refined dining sets, comfortable bedroom furniture, and architectural interior products.
+          </p>
+          <div style="background: var(--color-surface-warm); padding: 2rem; border-radius: 4px; margin: 2.5rem 0; border-left: 3px solid var(--color-accent);">
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Verified Business Details</h3>
+            <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">
+              <strong>Address:</strong> Main Vehari Road, near Chungi No. 22, Timber Market, Multan, Punjab, Pakistan
+            </p>
+            <p style="margin-bottom: 0; font-size: 0.95rem;">
+              <strong>Phone:</strong> <a href="tel:+923009630392" style="color: var(--color-accent); font-weight: 600;">+92 300 9630392</a>
+            </p>
+          </div>
+          <p style="margin-bottom: 2rem; color: var(--color-text-muted);">
+            Customers can place orders securely online through Shopify checkout or get in touch directly with our team to inquire about specific pieces, finishes, or custom dimensions.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== 12. PAGE: FAQ ==================== -->
+  <div id="view-faq" class="page-view">
+    <section class="section-spacing">
+      <div class="container container-narrow">
+        <div class="page-breadcrumb">
+          <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Frequently Asked Questions</span>
+        </div>
+        <div class="section-header text-center" style="margin-bottom: 3.5rem;">
+          <span class="section-eyebrow">Assistance &amp; Support</span>
+          <h1 class="section-title">Frequently Asked Questions</h1>
+          <p class="section-subtitle">Find answers to common questions about ordering, product dimensions, finishes, and customer care.</p>
+        </div>
+        <div class="faq-accordion-list" style="display: flex; flex-direction: column; gap: 1rem;">
+          <div class="faq-item" style="border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; background: #fff;">
+            <button type="button" class="accordion-trigger" aria-expanded="false" style="width: 100%; text-align: left; padding: 1.25rem 1.5rem; background: none; border: none; font-family: var(--font-heading); font-size: 1.25rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+              <span>How can I place an order?</span>
+              <span style="color: var(--color-accent); font-size: 1.4rem;">&#43;</span>
+            </button>
+            <div hidden style="padding: 0 1.5rem 1.5rem; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7;">
+              Select your desired furniture or interior pieces, choose variants (such as finish or size), and click 'Add to Cart'. When you are ready, proceed to our secure Shopify checkout to enter your contact, delivery, and payment information.
+            </div>
+          </div>
+
+          <div class="faq-item" style="border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; background: #fff;">
+            <button type="button" class="accordion-trigger" aria-expanded="false" style="width: 100%; text-align: left; padding: 1.25rem 1.5rem; background: none; border: none; font-family: var(--font-heading); font-size: 1.25rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+              <span>How do I check furniture dimensions?</span>
+              <span style="color: var(--color-accent); font-size: 1.4rem;">&#43;</span>
+            </button>
+            <div hidden style="padding: 0 1.5rem 1.5rem; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7;">
+              Each product detail page contains an exact 'Dimensions &amp; Product Details' section displaying the Width, Height, Depth, and Weight configured for that piece. Please measure your room and doorway clearances before ordering.
+            </div>
+          </div>
+
+          <div class="faq-item" style="border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; background: #fff;">
+            <button type="button" class="accordion-trigger" aria-expanded="false" style="width: 100%; text-align: left; padding: 1.25rem 1.5rem; background: none; border: none; font-family: var(--font-heading); font-size: 1.25rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+              <span>Are furniture colors and finishes customizable?</span>
+              <span style="color: var(--color-accent); font-size: 1.4rem;">&#43;</span>
+            </button>
+            <div hidden style="padding: 0 1.5rem 1.5rem; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7;">
+              Many of our furniture items can be customized in terms of wood polish, fabric type, or upholstery color. Please contact our team at +92 300 9630392 or visit our Multan showroom to discuss custom orders.
+            </div>
+          </div>
+
+          <div class="faq-item" style="border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; background: #fff;">
+            <button type="button" class="accordion-trigger" aria-expanded="false" style="width: 100%; text-align: left; padding: 1.25rem 1.5rem; background: none; border: none; font-family: var(--font-heading); font-size: 1.25rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+              <span>Do you offer delivery and installation?</span>
+              <span style="color: var(--color-accent); font-size: 1.4rem;">&#43;</span>
+            </button>
+            <div hidden style="padding: 0 1.5rem 1.5rem; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7;">
+              Delivery arrangements, shipping rates, and on-site assembly depend on the specific product and destination. Rates and options are configured in Shopify checkout or can be coordinated with our store staff upon ordering.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== 13. PAGE: SERVICES ==================== -->
+  <div id="view-services" class="page-view">
+    <section class="section-spacing">
+      <div class="container">
+        <div class="page-breadcrumb">
+          <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Interior Services</span>
+        </div>
+        <div class="section-header text-center" style="max-width: 680px; margin: 0 auto 3.5rem;">
+          <span class="section-eyebrow">Expertise &amp; Capabilities</span>
+          <h1 class="section-title">Interior &amp; Furniture Services</h1>
+          <p class="section-subtitle">We collaborate with homeowners, architects, and designers to realize distinctive furniture and interior concepts.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem;">
+          <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 4px; padding: 2.25rem 1.75rem;">
+            <h2 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">Furniture Consultation</h2>
+            <p style="color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">Guidance on wood finishes, seating ergonomics, spatial layouts, and matching collections to existing room palettes.</p>
+            <a href="javascript:void(0)" onclick="switchView('contact')" class="btn-link" style="font-size: 0.8rem;">Inquire About This Service &rarr;</a>
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 4px; padding: 2.25rem 1.75rem;">
+            <h2 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">Custom Furniture Sizing</h2>
+            <p style="color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">Customizable dimensions on select beds, dining tables, consoles, and sofas to fit your home's unique layout.</p>
+            <a href="javascript:void(0)" onclick="switchView('contact')" class="btn-link" style="font-size: 0.8rem;">Inquire About This Service &rarr;</a>
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 4px; padding: 2.25rem 1.75rem;">
+            <h2 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.75rem;">Residential Interiors</h2>
+            <p style="color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">Coordinated selection of wall paneling, focal mirrors, lighting fixtures, and loose furniture for home interiors.</p>
+            <a href="javascript:void(0)" onclick="switchView('contact')" class="btn-link" style="font-size: 0.8rem;">Inquire About This Service &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== 14. PAGE: INSPIRATION ==================== -->
+  <div id="view-inspiration" class="page-view">
+    <section class="section-spacing">
+      <div class="container">
+        <div class="page-breadcrumb">
+          <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Design Inspiration</span>
+        </div>
+        <div class="section-header text-center" style="max-width: 720px; margin: 0 auto 3.5rem;">
+          <span class="section-eyebrow">Design Perspectives</span>
+          <h1 class="section-title">Interior &amp; Furniture Inspiration</h1>
+          <p class="section-subtitle">Explore visual styling concepts and spatial design ideas to help you envision Caperino furniture in your home.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;">
+          <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; background: #fff; border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden;" class="inspiration-card-grid">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" alt="Living Room" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: center;">
+              <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-accent); font-weight: 600; margin-bottom: 0.5rem;">Living Room Inspiration</span>
+              <h2 style="font-family: var(--font-heading); font-size: 1.85rem; margin-bottom: 0.75rem;">Warm Minimalist Living Room</h2>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.65; margin-bottom: 1.5rem;">Layered textures, solid timber coffee tables, and deep cushioned seating create an inviting living sanctuary.</p>
+              <div><a href="javascript:void(0)" onclick="switchView('living-room')" class="btn btn-secondary">Explore Living Room Pieces &rarr;</a></div>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; background: #fff; border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden;" class="inspiration-card-grid">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80" alt="Bedroom" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: center;">
+              <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-accent); font-weight: 600; margin-bottom: 0.5rem;">Bedroom Inspiration</span>
+              <h2 style="font-family: var(--font-heading); font-size: 1.85rem; margin-bottom: 0.75rem;">Serene Bedroom Sanctuary</h2>
+              <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.65; margin-bottom: 1.5rem;">Architectural headboard bed frames paired with matching nightstands for restful symmetry.</p>
+              <div><a href="javascript:void(0)" onclick="switchView('bedroom')" class="btn btn-secondary">Explore Bedroom Pieces &rarr;</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== 15. PAGE: FULL CART ==================== -->
+  <div id="view-cart" class="page-view">
+    <section class="section-spacing">
+      <div class="container container-narrow">
+        <div class="page-breadcrumb">
+          <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Your Cart</span>
+        </div>
+        <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 2rem; text-align: center;">Your Shopping Cart</h1>
+        <div id="cart-page-content-box">
+          <!-- Populated by updateCartUi() -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== 16. PAGE: SHIPPING POLICY ==================== -->
+  <div id="view-shipping" class="page-view">
+    <section class="section-spacing">
+      <div class="container container-narrow">
+        <div class="page-breadcrumb">
+          <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Shipping Policy</span>
+        </div>
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Customer Care</span>
+          <h1 class="section-title">Shipping &amp; Delivery Policy</h1>
+        </div>
+        <div class="rte" style="line-height: 1.8; color: var(--color-text-main);">
+          <p>At Caperino Furnitures &amp; Interiors, every order is processed carefully from our Timber Market workshop in Multan. Delivery charges and estimated timelines are calculated accurately at Shopify checkout according to the destination and size of the furniture pieces.</p>
+          <h3 style="font-size: 1.3rem; margin: 1.5rem 0 0.5rem;">Delivery Coordination</h3>
+          <p>Once your order is confirmed, our dispatch team will contact you directly via phone or WhatsApp at the number provided during checkout to coordinate a convenient delivery day and ensure access to your home.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== 17. PAGE: RETURN POLICY ==================== -->
+  <div id="view-returns" class="page-view">
+    <section class="section-spacing">
+      <div class="container container-narrow">
+        <div class="page-breadcrumb">
+          <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Return Policy</span>
+        </div>
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Customer Care</span>
+          <h1 class="section-title">Return &amp; Refund Policy</h1>
+        </div>
+        <div class="rte" style="line-height: 1.8; color: var(--color-text-main);">
+          <p>We want you to be completely satisfied with your furniture and interior purchases. Please inspect all items upon arrival in the presence of our delivery personnel.</p>
+          <h3 style="font-size: 1.3rem; margin: 1.5rem 0 0.5rem;">Inspection on Delivery</h3>
+          <p>If any piece arrives with transit damage or manufacturing discrepancies, please note it immediately on the delivery receipt and contact our customer service line at +92 300 9630392 for prompt resolution.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== 18. PAGE: PRIVACY POLICY ==================== -->
+  <div id="view-privacy" class="page-view">
+    <section class="section-spacing">
+      <div class="container container-narrow">
+        <div class="page-breadcrumb">
+          <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Privacy Policy</span>
+        </div>
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Legal</span>
+          <h1 class="section-title">Privacy Policy</h1>
+        </div>
+        <div class="rte" style="line-height: 1.8; color: var(--color-text-main);">
+          <p>Your privacy is important to us. Caperino Furnitures &amp; Interiors collects only the customer information necessary to process orders, fulfill furniture shipments, and provide customer support.</p>
+          <p>All transaction and customer data is securely encrypted through Shopify's PCI-compliant infrastructure.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== 19. PAGE: TERMS & CONDITIONS ==================== -->
+  <div id="view-terms" class="page-view">
+    <section class="section-spacing">
+      <div class="container container-narrow">
+        <div class="page-breadcrumb">
+          <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <span>Terms &amp; Conditions</span>
+        </div>
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Legal</span>
+          <h1 class="section-title">Terms &amp; Conditions</h1>
+        </div>
+        <div class="rte" style="line-height: 1.8; color: var(--color-text-main);">
+          <p>By browsing and placing orders on Caperino Furnitures &amp; Interiors, you agree to our standard store terms. All product descriptions, dimensions, and specifications are provided in good faith.</p>
+          <p>Prices and stock availability are subject to change as managed through our Multan showroom and Shopify store admin.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== 20. PAGE: PRODUCT DETAILS (PDP) ==================== -->
+  <div id="view-pdp" class="page-view">
+    <section class="product-page-section">
+      <div class="container">
+        <div class="page-breadcrumb">
+          <a href="javascript:void(0)" onclick="switchView('home')">Home</a> / <a href="javascript:void(0)" onclick="switchView('shop')">Catalog</a> / <span id="pdp-breadcrumb-title">Modern 3-Seater Sofa</span>
+        </div>
+        <div class="pdp-grid">
+          <div class="pdp-gallery-wrap">
+            <div class="pdp-gallery-main">
+              <img id="pdp-main-image" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80" alt="Furniture Piece">
+              <span class="product-badge badge-sale" id="pdp-badge" style="top: 16px; left: 16px;">Sale</span>
+            </div>
+            <div class="pdp-gallery-thumbnails" id="pdp-thumbs-row"></div>
+          </div>
+          <div class="pdp-details">
+            <div class="pdp-vendor" id="pdp-vendor-name">Caperino Furnitures &amp; Interiors</div>
+            <h1 class="pdp-title" id="pdp-title">Modern 3-Seater Sofa</h1>
+            <div class="pdp-price-wrap">
+              <span class="pdp-price" id="pdp-price">Rs. 95,000</span>
+              <span class="pdp-compare-price" id="pdp-compare-price">Rs. 110,000</span>
+            </div>
+            <div class="pdp-description" id="pdp-description">
+              The Modern 3-Seater Sofa combines generous seating depth with structured tailored lines. Built upon a solid hardwood frame with resilient high-density cushioning.
+            </div>
+
+            <div class="variant-option-group">
+              <div class="variant-option-title">
+                <span>Selected Option: <strong id="selected-color-name">Oatmeal Linen</strong></span>
+              </div>
+              <div class="variant-swatches">
+                <button type="button" class="swatch-btn is-active" onclick="selectColorSwatch('Oatmeal Linen', this)">Oatmeal Linen</button>
+                <button type="button" class="swatch-btn" onclick="selectColorSwatch('Charcoal Grey', this)">Charcoal Grey</button>
+                <button type="button" class="swatch-btn" onclick="selectColorSwatch('Warm Sand', this)">Warm Sand</button>
+              </div>
+            </div>
+
+            <div class="pdp-purchase-actions">
+              <div class="qty-and-cart-row">
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn qty-minus" onclick="adjustPdpQty(-1)">&minus;</button>
+                  <input type="number" value="1" min="1" class="qty-input" id="pdp-qty-input">
+                  <button type="button" class="qty-btn qty-plus" onclick="adjustPdpQty(1)">&#43;</button>
+                </div>
+                <button type="button" class="btn btn-primary btn-add-to-cart-main" onclick="addCurrentPdpToCart()">
+                  Add to Cart
+                </button>
+              </div>
+              <button type="button" class="btn btn-buy-now" onclick="showToast('Proceeding to certified Shopify checkout (/checkout)...');">
+                Buy It Now
+              </button>
+            </div>
+
+            <div class="pdp-secondary-actions">
+              <button type="button" class="pdp-action-link" id="pdp-wishlist-btn" onclick="toggleCurrentPdpWishlist()">
+                <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                Save to Wishlist
+              </button>
+              <button type="button" class="pdp-action-link" onclick="navigator.clipboard.writeText(window.location.href); showToast('Link copied to clipboard!');">
+                <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                Share Piece
+              </button>
+            </div>
+
+            <!-- Dimensions & Metafields Guide -->
+            <div class="specs-card" id="furniture-dimensions-guide">
+              <h3 class="specs-title">
+                <svg style="width: 20px; height: 20px; color: var(--color-accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                Dimensions &amp; Product Details (Shopify Metafields)
+              </h3>
+              <div class="dimension-visual-box">
+                <div><span class="dim-item-label">Width</span><span class="dim-item-value" id="pdp-spec-w">86 in</span></div>
+                <div><span class="dim-item-label">Height</span><span class="dim-item-value" id="pdp-spec-h">32 in</span></div>
+                <div><span class="dim-item-label">Depth</span><span class="dim-item-value" id="pdp-spec-d">36 in</span></div>
+                <div><span class="dim-item-label">Weight</span><span class="dim-item-value" id="pdp-spec-wt">62 kg</span></div>
+              </div>
+              <table class="specs-table" style="margin-top: 1.25rem;">
+                <tbody>
+                  <tr><th>Primary Material</th><td id="pdp-spec-mat">Solid Seasoned Teak Frame &amp; Linen Blend Fabric</td></tr>
+                  <tr><th>Finish</th><td>Natural Stained Protective Matte Sealant</td></tr>
+                  <tr><th>Recommended Room</th><td id="pdp-spec-room">Living Room / Lounge</td></tr>
+                  <tr><th>Assembly Required</th><td>Minimal / Legs attachment</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer with All Distinct Links -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h3 class="footer-col-title" style="font-size: 1.4rem;">Caperino Furnitures &amp; Interiors</h3>
+          <div class="footer-business-details">
+            <p>
+              <strong>Showroom &amp; Workshop:</strong><br>
+              Main Vehari Road, near Chungi No. 22, Timber Market,<br>
+              Multan, Punjab, Pakistan
+            </p>
+            <p>
+              <strong>Phone:</strong><br>
+              <a href="tel:+923009630392">+92 300 9630392</a>
+            </p>
+            <p style="font-size: 0.8rem; color: var(--color-dark-muted);">
+              Furniture &bull; Home Interior &bull; Home Decor &bull; E-commerce
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Shop</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="switchView('shop')">All Furniture</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('living-room')">Living Room</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('bedroom')">Bedroom</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('dining')">Dining Room</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('home-decor')">Home Decor</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('interior')">Interior Products</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('new-arrivals')">New Arrivals</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="switchView('contact')">Contact Us</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('about')">About Us</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('faq')">Frequently Asked Questions</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('services')">Interior Services</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('inspiration')">Design Inspiration</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('shipping')">Shipping Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('returns')">Return &amp; Refund Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('privacy')">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="switchView('terms')">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Stay Inspired</h4>
+          <p style="font-size: 0.85rem; color: var(--color-dark-muted); margin-bottom: 1.25rem;">
+            Subscribe to receive design perspectives, new furniture drops, and exclusive seasonal releases.
+          </p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed to Caperino updates!'); this.reset();">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required style="width: 100%; border-radius: 2px; margin-bottom: 0.6rem; padding: 0.75rem 1rem;">
+            <button type="submit" class="btn btn-primary btn-block" style="background: var(--color-accent); border-color: var(--color-accent); padding: 0.75rem;">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Caperino Furnitures &amp; Interiors. All rights reserved.
+        </div>
+        <div>
+          <span>Powered by Shopify</span>
+          <span style="margin: 0 8px;">&bull;</span>
+          <span>Timber Market, Multan</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AJAX Cart Drawer -->
+  <div class="cart-drawer-overlay" onclick="closeCartDrawer()"></div>
+  <div class="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping Cart">
+    <div class="cart-drawer-header">
+      <h2 class="cart-drawer-title">Shopping Cart (<span class="cart-badge-count">0</span>)</h2>
+      <button type="button" class="cart-drawer-close" onclick="closeCartDrawer()" aria-label="Close cart">
+        <svg style="width: 22px; height: 22px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+    <div class="cart-drawer-items" id="cart-drawer-items-list"></div>
+    <div class="cart-drawer-footer" id="cart-drawer-footer" style="display: none;">
+      <div class="cart-subtotal-row">
+        <span>Subtotal</span>
+        <span class="cart-subtotal-amount" id="cart-drawer-subtotal">Rs. 0</span>
+      </div>
+      <div class="cart-tax-notice">Taxes, shipping, and discounts calculated securely at checkout.</div>
+      <div style="margin-bottom: 1rem;">
+        <label style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.35rem; color: var(--color-text-muted);">
+          Special Order / Delivery Notes
+        </label>
+        <textarea rows="2" placeholder="e.g., Preferred delivery date, floor level, etc." style="width: 100%; border: 1px solid var(--color-border); border-radius: 2px; padding: 0.5rem; font-size: 0.85rem;"></textarea>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+        <button type="button" class="btn btn-primary btn-block" onclick="showToast('Proceeding directly to certified Shopify Checkout (/checkout)...');">
+          Proceed to Checkout &rarr;
+        </button>
+        <button type="button" class="btn btn-secondary btn-block" onclick="closeCartDrawer(); switchView('cart');">
+          View Full Cart Page
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Predictive Search Modal -->
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search Furniture">
+    <div class="search-modal-inner">
+      <div class="search-input-wrap">
+        <svg style="width: 22px; height: 22px; color: var(--color-accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input type="search" id="preview-search-input" placeholder="Search sofa, bed, dining, lighting, wall panel..." aria-label="Search">
+        <button type="button" onclick="closeSearchModal()" style="background: none; border: none; cursor: pointer; color: var(--color-text-main);">
+          <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <div class="search-results-box" id="preview-search-results">
+        <div style="text-align: center; padding: 2rem; color: var(--color-text-muted);">
+          <p style="font-size: 0.95rem;">Type to search our furniture and interior catalog...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Modal -->
+  <div class="wishlist-modal" role="dialog" aria-modal="true" aria-label="My Wishlist">
+    <div class="wishlist-modal-content">
+      <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding-bottom: 1.25rem;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.6rem;">Saved Items</h2>
+        <button type="button" onclick="closeWishlistModal()" style="background: none; border: none; cursor: pointer;">
+          <svg style="width: 22px; height: 22px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <div class="wishlist-modal-body" id="wishlist-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div class="quickview-modal" role="dialog" aria-modal="true" aria-label="Product Quick View">
+    <div class="quickview-modal-content" style="background: #FFFFFF; border-radius: 4px; width: 100%; max-width: 840px; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.15);">
+      <button type="button" class="quickview-modal-close" onclick="closeQuickView()" style="position: absolute; top: 1.25rem; right: 1.25rem; background: none; border: none; cursor: pointer; color: var(--color-text-main); padding: 0.25rem;" aria-label="Close modal">
+        <svg style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+      <div class="quickview-modal-body" id="preview-quickview-body"></div>
+    </div>
+  </div>
+
+  <!-- Complete Javascript Engine -->
+  <script>
+    const sampleProducts = [
+      {
+        id: "1",
+        handle: "modern-3-seater-sofa",
+        title: "Modern 3-Seater Sofa",
+        vendor: "Caperino Furnitures & Interiors",
+        price: 95000,
+        comparePrice: 110000,
+        category: "Living Room",
+        type: "Furniture",
+        isNew: false,
+        image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=80",
+        hoverImage: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=700&q=80",
+        description: "Built upon a solid hardwood frame with resilient high-density cushioning and textured linen upholstery that complements modern residential interiors.",
+        material: "Solid Teak & Linen Blend",
+        w: "86 in", h: "32 in", d: "36 in", wt: "62 kg", room: "Living Room"
+      },
+      {
+        id: "2",
+        handle: "luxury-sectional-sofa",
+        title: "Luxury Sectional Sofa",
+        vendor: "Caperino Furnitures & Interiors",
+        price: 165000,
+        comparePrice: 185000,
+        category: "Living Room",
+        type: "Furniture",
+        isNew: true,
+        image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80",
+        hoverImage: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=80",
+        description: "Expansive L-shaped sectional featuring deep feather-blend down cushions and reinforced corner blocking.",
+        material: "Hardwood & Performance Velvet",
+        w: "114 in", h: "33 in", d: "68 in", wt: "98 kg", room: "Living Room"
+      },
+      {
+        id: "3",
+        handle: "minimal-coffee-table",
+        title: "Minimal Coffee Table",
+        vendor: "Caperino Furnitures & Interiors",
+        price: 34000,
+        comparePrice: 39000,
+        category: "Living Room",
+        type: "Furniture",
+        isNew: false,
+        image: "https://images.unsplash.com/photo-1533090161767-e6ffed986b88?auto=format&fit=crop&w=700&q=80",
+        hoverImage: "https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=700&q=80",
+        description: "Solid white oak timber with soft chamfered edges and durable natural protective matte sealant.",
+        material: "Solid White Oak",
+        w: "48 in", h: "16 in", d: "24 in", wt: "24 kg", room: "Living Room"
+      },
+      {
+        id: "4",
+        handle: "modern-tv-console",
+        title: "Modern TV Console",
+        vendor: "Caperino Furnitures & Interiors",
+        price: 58000,
+        comparePrice: 65000,
+        category: "Living Room",
+        type: "Furniture",
+        isNew: false,
+        image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=700&q=80",
+        hoverImage: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=700&q=80",
+        description: "Slatted sliding doors with concealed cable access passages and soft-close European hardware.",
+        material: "Walnut Veneer & Hardwood Legs",
+        w: "72 in", h: "22 in", d: "18 in", wt: "42 kg", room: "Living Room"
+      },
+      {
+        id: "5",
+        handle: "wooden-bed-frame",
+        title: "Wooden King Bed Frame",
+        vendor: "Caperino Furnitures & Interiors",
+        price: 115000,
+        comparePrice: 130000,
+        category: "Bedroom",
+        type: "Furniture",
+        isNew: false,
+        image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80",
+        hoverImage: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=80",
+        description: "Solid platform bed with an integrated architectural timber headboard and heavy-duty center slat supports.",
+        material: "Solid Sheesham / Teak",
+        w: "76 in", h: "44 in", d: "84 in", wt: "85 kg", room: "Bedroom"
+      },
+      {
+        id: "6",
+        handle: "modern-bedside-table",
+        title: "Modern Bedside Table",
+        vendor: "Caperino Furnitures & Interiors",
+        price: 18500,
+        comparePrice: 22000,
+        category: "Bedroom",
+        type: "Furniture",
+        isNew: false,
+        image: "https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=700&q=80",
+        hoverImage: "https://images.unsplash.com/photo-1533090161767-e6ffed986b88?auto=format&fit=crop&w=700&q=80",
+        description: "Dual-drawer nightstand with seamless push-to-open drawer glides and rounded corner joinery.",
+        material: "Solid Teak",
+        w: "20 in", h: "21 in", d: "16 in", wt: "14 kg", room: "Bedroom"
+      },
+      {
+        id: "7",
+        handle: "classic-dressing-table",
+        title: "Classic Dressing Table & Mirror",
+        vendor: "Caperino Furnitures & Interiors",
+        price: 62000,
+        comparePrice: 70000,
+        category: "Bedroom",
+        type: "Furniture",
+        isNew: true,
+        image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=700&q=80",
+        hoverImage: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80",
+        description: "Features three organizational drawers, a frameless arch vanity mirror, and matching cushioned vanity stool.",
+        material: "Hardwood & Brass Pulls",
+        w: "46 in", h: "58 in", d: "19 in", wt: "38 kg", room: "Bedroom"
+      },
+      {
+        id: "8",
+        handle: "six-seater-dining-table",
+        title: "Six-Seater Dining Table",
+        vendor: "Caperino Furnitures & Interiors",
+        price: 88000,
+        comparePrice: 98000,
+        category: "Dining",
+        type: "Furniture",
+        isNew: true,
+        image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=700&q=80",
+        hoverImage: "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=700&q=80",
+        description: "Crafted from seasoned solid timber with an architectural trestle base providing generous legroom.",
+        material: "Solid Teak Hardwood",
+        w: "72 in", h: "30 in", d: "36 in", wt: "54 kg", room: "Dining"
+      },
+      {
+        id: "9",
+        handle: "upholstered-dining-chair",
+        title: "Upholstered Dining Chair",
+        vendor: "Caperino Furnitures & Interiors",
+        price: 16500,
+        comparePrice: 19500,
+        category: "Dining",
+        type: "Furniture",
+        isNew: false,
+        image: "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=700&q=80",
+        hoverImage: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=700&q=80",
+        description: "Ergonomically contoured dining chair with curved back support and stain-resistant woven textured fabric.",
+        material: "Beechwood & Textured Fabric",
+        w: "20 in", h: "33 in", d: "21 in", wt: "8 kg", room: "Dining"
+      },
+      {
+        id: "10",
+        handle: "modern-sideboard",
+        title: "Modern Sideboard Credenza",
+        vendor: "Caperino Furnitures & Interiors",
+        price: 72000,
+        comparePrice: 82000,
+        category: "Dining",
+        type: "Furniture",
+        isNew: false,
+        image: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=700&q=80",
+        hoverImage: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=700&q=80",
+        description: "Four-door credenza with fluted acoustic panel detailing, push-latches, and interior adjustable shelves.",
+        material: "Natural Ash & Black Steel",
+        w: "64 in", h: "32 in", d: "18 in", wt: "52 kg", room: "Dining"
+      },
+      {
+        id: "11",
+        handle: "contemporary-wall-mirror",
+        title: "Contemporary Wall Mirror",
+        vendor: "Caperino Furnitures & Interiors",
+        price: 19500,
+        comparePrice: 24000,
+        category: "Home Decor",
+        type: "Home Decor",
+        isNew: false,
+        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=80",
+        hoverImage: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80",
+        description: "Asymmetrical organically curved wall mirror with a slender recessed metal frame in muted champagne brass.",
+        material: "Champagne Brass & High-Clarity Mirror",
+        w: "32 in", h: "48 in", d: "1.5 in", wt: "12 kg", room: "Any Room"
+      },
+      {
+        id: "12",
+        handle: "decorative-wall-panel",
+        title: "Fluted Wood Wall Panel",
+        vendor: "Caperino Furnitures & Interiors",
+        price: 14500,
+        comparePrice: 17500,
+        category: "Interior",
+        type: "Interior",
+        isNew: true,
+        image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80",
+        hoverImage: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=700&q=80",
+        description: "Pre-finished architectural fluted wooden wall panels with acoustic felt backing ready for mounting.",
+        material: "American Walnut & Sound Felt",
+        w: "24 in", h: "96 in", d: "0.8 in", wt: "9 kg", room: "Interior Walls"
+      }
+    ];
+
+    let currentSelectedProduct = sampleProducts[0];
+    let cart = [];
+    let wishlist = [];
+
+    function renderCard(p) {
+      const saleBadge = p.comparePrice > p.price ? '<span class="product-badge badge-sale">Sale</span>' : (p.isNew ? '<span class="product-badge badge-new">New</span>' : '');
+      const compareHtml = p.comparePrice > p.price ? `<span class="price-compare">Rs. ${p.comparePrice.toLocaleString()}</span>` : '';
+      const inWishlist = wishlist.some(w => w.id === p.id);
+
+      return `
+        <div class="product-card" data-product-id="${p.id}">
+          <div class="product-card-image-wrap">
+            <a href="javascript:void(0)" onclick="openPdpWith('${p.id}')" class="product-card-link-overlay"></a>
+            <img src="${p.image}" alt="${p.title}" class="product-card-img primary-img" loading="lazy">
+            <img src="${p.hoverImage}" alt="${p.title}" class="product-card-img secondary-img" loading="lazy">
+            ${saleBadge}
+            <div class="product-card-actions">
+              <button type="button" class="wishlist-btn-card ${inWishlist ? 'is-active' : ''}" onclick="toggleWishlistItem('${p.id}')" title="Wishlist">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+              </button>
+            </div>
+            <div class="product-card-bottom-actions">
+              <button type="button" class="btn-card-quickview" onclick="openQuickViewModal('${p.id}')">Quick View</button>
+              <button type="button" class="btn-card-addtocart" onclick="addToCart('${p.id}', 1)">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card-info">
+            <div class="product-card-vendor">${p.vendor}</div>
+            <h3 class="product-card-title"><a href="javascript:void(0)" onclick="openPdpWith('${p.id}')">${p.title}</a></h3>
+            <div class="product-card-price-wrap">
+              <span class="price-regular">Rs. ${p.price.toLocaleString()}</span>
+              ${compareHtml}
+            </div>
+            <div class="product-card-meta">${p.material}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Populate Grids for each specific page
+    function populateAllGrids() {
+      // 1. Home featured (top 4)
+      const homeFeat = document.getElementById('home-featured-grid');
+      if (homeFeat) homeFeat.innerHTML = sampleProducts.slice(0, 4).map(renderCard).join('');
+
+      // 2. Shop All
+      const shopAll = document.getElementById('shop-all-grid');
+      if (shopAll) shopAll.innerHTML = sampleProducts.map(renderCard).join('');
+
+      // 3. Furniture
+      const furn = document.getElementById('furniture-grid');
+      if (furn) furn.innerHTML = sampleProducts.filter(p => p.type === 'Furniture').map(renderCard).join('');
+
+      // 4. Living Room
+      const lr = document.getElementById('living-room-grid');
+      if (lr) lr.innerHTML = sampleProducts.filter(p => p.category === 'Living Room').map(renderCard).join('');
+
+      // 5. Bedroom
+      const br = document.getElementById('bedroom-grid');
+      if (br) br.innerHTML = sampleProducts.filter(p => p.category === 'Bedroom').map(renderCard).join('');
+
+      // 6. Dining
+      const dr = document.getElementById('dining-grid');
+      if (dr) dr.innerHTML = sampleProducts.filter(p => p.category === 'Dining').map(renderCard).join('');
+
+      // 7. Home Decor
+      const hd = document.getElementById('home-decor-grid');
+      if (hd) hd.innerHTML = sampleProducts.filter(p => p.category === 'Home Decor' || p.type === 'Home Decor').map(renderCard).join('');
+
+      // 8. Interior
+      const intG = document.getElementById('interior-grid');
+      if (intG) intG.innerHTML = sampleProducts.filter(p => p.category === 'Interior' || p.type === 'Interior').map(renderCard).join('');
+
+      // 9. New Arrivals
+      const na = document.getElementById('new-arrivals-grid');
+      if (na) na.innerHTML = sampleProducts.filter(p => p.isNew || p.comparePrice > p.price).map(renderCard).join('');
+    }
+
+    // Main Page Switcher
+    window.switchView = function(viewName, btnEl) {
+      // Hide all page views
+      document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active'));
+
+      // Show targeted page view
+      const target = document.getElementById(`view-${viewName}`);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Sync top preview pills
+      document.querySelectorAll('.preview-nav-pills button').forEach(b => b.classList.remove('active'));
+      const matchingPill = document.querySelector(`.preview-nav-pills button[data-page-btn="${viewName}"]`);
+      if (matchingPill) matchingPill.classList.add('active');
+
+      // Sync header desktop nav links
+      document.querySelectorAll('.header-nav .nav-link').forEach(l => l.classList.remove('is-active'));
+      const matchingNav = document.querySelector(`.header-nav .nav-link[data-nav="${viewName}"]`);
+      if (matchingNav) matchingNav.classList.add('is-active');
+
+      // If switching to cart page, refresh its content
+      if (viewName === 'cart') {
+        renderFullCartPage();
+      }
+    };
+
+    // Open PDP with specific product
+    window.openPdpWith = function(id) {
+      const p = sampleProducts.find(x => x.id === id);
+      if (!p) return;
+      currentSelectedProduct = p;
+
+      document.getElementById('pdp-breadcrumb-title').textContent = p.title;
+      document.getElementById('pdp-main-image').src = p.image;
+      document.getElementById('pdp-title').textContent = p.title;
+      document.getElementById('pdp-price').textContent = `Rs. ${p.price.toLocaleString()}`;
+      
+      const compEl = document.getElementById('pdp-compare-price');
+      if (p.comparePrice > p.price) {
+        compEl.textContent = `Rs. ${p.comparePrice.toLocaleString()}`;
+        compEl.style.display = 'inline';
+      } else {
+        compEl.style.display = 'none';
+      }
+
+      document.getElementById('pdp-description').textContent = p.description;
+      document.getElementById('pdp-spec-w').textContent = p.w || 'N/A';
+      document.getElementById('pdp-spec-h').textContent = p.h || 'N/A';
+      document.getElementById('pdp-spec-d').textContent = p.d || 'N/A';
+      document.getElementById('pdp-spec-wt').textContent = p.wt || 'N/A';
+      document.getElementById('pdp-spec-mat').textContent = p.material || 'Solid Wood';
+      document.getElementById('pdp-spec-room').textContent = p.room || 'Living Room';
+
+      // Thumbs
+      const thumbsContainer = document.getElementById('pdp-thumbs-row');
+      thumbsContainer.innerHTML = `
+        <div class="pdp-thumb-item is-active" onclick="switchPdpThumb('${p.image}', this)"><img src="${p.image}"></div>
+        <div class="pdp-thumb-item" onclick="switchPdpThumb('${p.hoverImage}', this)"><img src="${p.hoverImage}"></div>
+      `;
+
+      switchView('pdp');
+    };
+
+    function switchPdpThumb(src, el) {
+      document.getElementById('pdp-main-image').src = src;
+      document.querySelectorAll('.pdp-thumb-item').forEach(t => t.classList.remove('is-active'));
+      el.classList.add('is-active');
+    }
+
+    function selectColorSwatch(color, btn) {
+      document.getElementById('selected-color-name').textContent = color;
+      btn.parentElement.querySelectorAll('.swatch-btn').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+    }
+
+    function adjustPdpQty(delta) {
+      const inp = document.getElementById('pdp-qty-input');
+      let val = parseInt(inp.value, 10) || 1;
+      val = Math.max(1, val + delta);
+      inp.value = val;
+    }
+
+    function addCurrentPdpToCart() {
+      const qty = parseInt(document.getElementById('pdp-qty-input').value, 10) || 1;
+      addToCart(currentSelectedProduct.id, qty);
+    }
+
+    function toggleCurrentPdpWishlist() {
+      toggleWishlistItem(currentSelectedProduct.id);
+    }
+
+    // Cart Management
+    window.addToCart = function(id, qty = 1) {
+      const prod = sampleProducts.find(p => p.id === id);
+      if (!prod) return;
+
+      const existing = cart.find(x => x.id === id);
+      if (existing) {
+        existing.quantity += qty;
+      } else {
+        cart.push({ ...prod, quantity: qty });
+      }
+
+      updateCartUi();
+      openCartDrawer();
+      showToast(`Added "${prod.title}" to cart`);
+    };
+
+    function updateCartUi() {
+      const totalCount = cart.reduce((s, x) => s + x.quantity, 0);
+      const totalPrice = cart.reduce((s, x) => s + (x.price * x.quantity), 0);
+
+      document.querySelectorAll('.cart-badge-count').forEach(b => {
+        b.textContent = totalCount;
+        b.style.display = totalCount > 0 ? 'flex' : 'none';
+      });
+
+      const drawerList = document.getElementById('cart-drawer-items-list');
+      const drawerFooter = document.getElementById('cart-drawer-footer');
+      const subtotalEl = document.getElementById('cart-drawer-subtotal');
+
+      if (cart.length === 0) {
+        drawerList.innerHTML = `
+          <div class="cart-drawer-empty">
+            <svg class="cart-drawer-empty-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <h3 style="font-family: var(--font-heading); margin-bottom: 0.5rem; font-size: 1.35rem;">Your Cart is Empty</h3>
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">Explore our furniture collections and find something for your space.</p>
+            <button type="button" class="btn btn-primary" onclick="closeCartDrawer(); switchView('shop');">Explore Collections</button>
+          </div>
+        `;
+        drawerFooter.style.display = 'none';
+      } else {
+        drawerFooter.style.display = 'block';
+        subtotalEl.textContent = `Rs. ${totalPrice.toLocaleString()}`;
+        drawerList.innerHTML = cart.map(item => `
+          <div class="cart-item">
+            <div class="cart-item-image"><img src="${item.image}" alt="${item.title}"></div>
+            <div class="cart-item-details">
+              <h4 class="cart-item-title">${item.title}</h4>
+              <div class="cart-item-variant">${item.material}</div>
+              <div class="cart-item-price">Rs. ${(item.price * item.quantity).toLocaleString()}</div>
+              <div class="cart-item-controls">
+                <div class="cart-item-qty">
+                  <button type="button" onclick="modifyQty('${item.id}', -1)">&minus;</button>
+                  <span>${item.quantity}</span>
+                  <button type="button" onclick="modifyQty('${item.id}', 1)">&#43;</button>
+                </div>
+                <button type="button" class="cart-item-remove" onclick="removeCart('${item.id}')">Remove</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Sync with full cart page if open
+      renderFullCartPage();
+    }
+
+    function modifyQty(id, delta) {
+      const item = cart.find(x => x.id === id);
+      if (item) {
+        item.quantity += delta;
+        if (item.quantity <= 0) {
+          cart = cart.filter(x => x.id !== id);
+        }
+      }
+      updateCartUi();
+    }
+
+    function removeCart(id) {
+      cart = cart.filter(x => x.id !== id);
+      updateCartUi();
+    }
+
+    function renderFullCartPage() {
+      const box = document.getElementById('cart-page-content-box');
+      if (!box) return;
+
+      if (cart.length === 0) {
+        box.innerHTML = `
+          <div style="text-align: center; padding: 4rem 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 4px;">
+            <svg style="width: 56px; height: 56px; color: var(--color-text-light); margin: 0 auto 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <h2 style="font-family: var(--font-heading); margin-bottom: 0.75rem;">Your cart is empty</h2>
+            <p style="color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 2rem;">Explore our furniture collections and find something beautiful for your space.</p>
+            <button type="button" class="btn btn-primary" onclick="switchView('shop')">Explore All Collections</button>
+          </div>
+        `;
+      } else {
+        const totalPrice = cart.reduce((s, x) => s + (x.price * x.quantity), 0);
+        box.innerHTML = `
+          <div style="border: 1px solid var(--color-border); border-radius: 4px; background: #fff; padding: 1.5rem; margin-bottom: 2rem;">
+            <table style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--color-border); text-align: left; font-size: 0.8rem; text-transform: uppercase; color: var(--color-text-light);">
+                  <th style="padding-bottom: 1rem;">Product</th>
+                  <th style="padding-bottom: 1rem; text-align: center;">Quantity</th>
+                  <th style="padding-bottom: 1rem; text-align: right;">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${cart.map(item => `
+                  <tr style="border-bottom: 1px solid var(--color-surface-warm);">
+                    <td style="padding: 1.25rem 0; display: flex; gap: 1rem; align-items: center;">
+                      <img src="${item.image}" alt="${item.title}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 2px;">
+                      <div>
+                        <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 2px;">${item.title}</h4>
+                        <div style="font-size: 0.8rem; color: var(--color-text-muted);">${item.material}</div>
+                        <div style="font-size: 0.85rem; font-weight: 600;">Rs. ${item.price.toLocaleString()}</div>
+                        <button type="button" onclick="removeCart('${item.id}')" style="background: none; border: none; font-size: 0.75rem; color: var(--color-sale); text-decoration: underline; cursor: pointer; padding: 0; margin-top: 4px;">Remove</button>
+                      </div>
+                    </td>
+                    <td style="padding: 1.25rem 0; text-align: center;">
+                      <div class="qty-stepper" style="height: 36px; display: inline-flex;">
+                        <button type="button" class="qty-btn" onclick="modifyQty('${item.id}', -1)">&minus;</button>
+                        <input type="text" value="${item.quantity}" readonly class="qty-input" style="width: 32px;">
+                        <button type="button" class="qty-btn" onclick="modifyQty('${item.id}', 1)">&#43;</button>
+                      </div>
+                    </td>
+                    <td style="padding: 1.25rem 0; text-align: right; font-weight: 600;">
+                      Rs. ${(item.price * item.quantity).toLocaleString()}
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+          <div style="background: #fff; border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 4px; text-align: right;">
+            <div style="font-size: 1.3rem; margin-bottom: 0.5rem;">Subtotal: <strong>Rs. ${totalPrice.toLocaleString()}</strong></div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">Taxes and shipping calculated securely at Shopify Checkout.</p>
+            <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+              <button type="button" class="btn btn-secondary" onclick="switchView('shop')">Continue Shopping</button>
+              <button type="button" class="btn btn-primary" onclick="showToast('Proceeding to certified Shopify checkout (/checkout)...');">Proceed to Checkout &rarr;</button>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Wishlist Management
+    window.toggleWishlistItem = function(id) {
+      const prod = sampleProducts.find(p => p.id === id);
+      if (!prod) return;
+
+      const idx = wishlist.findIndex(w => w.id === id);
+      if (idx > -1) {
+        wishlist.splice(idx, 1);
+        showToast(`Removed "${prod.title}" from wishlist`);
+      } else {
+        wishlist.push(prod);
+        showToast(`Saved "${prod.title}" to wishlist`);
+      }
+
+      updateWishlistUi();
+      populateAllGrids();
+    };
+
+    function updateWishlistUi() {
+      document.querySelectorAll('.wishlist-badge-count').forEach(b => {
+        b.textContent = wishlist.length;
+        b.style.display = wishlist.length > 0 ? 'flex' : 'none';
+      });
+
+      const body = document.getElementById('wishlist-modal-body');
+      if (!body) return;
+
+      if (wishlist.length === 0) {
+        body.innerHTML = `
+          <div style="text-align: center; padding: 3rem 1.5rem;">
+            <svg style="width: 48px; height: 48px; color: var(--color-text-light); margin: 0 auto 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.5rem;">Your Wishlist is Empty</h3>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Save furniture pieces you love to review them anytime.</p>
+            <button type="button" class="btn btn-primary" onclick="closeWishlistModal(); switchView('shop');">Explore Furniture</button>
+          </div>
+        `;
+      } else {
+        body.innerHTML = `
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 1rem;">
+            ${wishlist.map(w => `
+              <div style="border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; background: #fff; display: flex; flex-direction: column;">
+                <div style="aspect-ratio: 1/1; position: relative;">
+                  <img src="${w.image}" alt="${w.title}" style="width: 100%; height: 100%; object-fit: cover;">
+                  <button type="button" onclick="toggleWishlistItem('${w.id}')" style="position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer;">&times;</button>
+                </div>
+                <div style="padding: 1rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <h4 style="font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 4px;">${w.title}</h4>
+                    <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.75rem;">Rs. ${w.price.toLocaleString()}</div>
+                  </div>
+                  <button type="button" class="btn btn-primary btn-block" style="padding: 0.6rem; font-size: 0.8rem;" onclick="addToCart('${w.id}', 1); closeWishlistModal();">Add to Cart</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+    }
+
+    // Quick View Modal
+    window.openQuickViewModal = function(id) {
+      const p = sampleProducts.find(x => x.id === id);
+      if (!p) return;
+      const modal = document.querySelector('.quickview-modal');
+      const body = document.getElementById('preview-quickview-body');
+      body.innerHTML = `
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+          <div style="aspect-ratio: 1/1; background: var(--color-surface-warm); border-radius: 4px; overflow: hidden;">
+            <img src="${p.image}" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); font-weight: 600;">${p.vendor}</div>
+            <h2 style="font-family: var(--font-heading); font-size: 1.8rem; line-height: 1.2;">${p.title}</h2>
+            <div style="display: flex; align-items: baseline; gap: 0.75rem;">
+              <span style="font-size: 1.35rem; font-weight: 600; color: var(--color-text-main);">Rs. ${p.price.toLocaleString()}</span>
+              ${p.comparePrice > p.price ? `<span style="font-size: 1.05rem; text-decoration: line-through; color: var(--color-text-light);">Rs. ${p.comparePrice.toLocaleString()}</span>` : ''}
+            </div>
+            <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6;">${p.description}</p>
+            <div style="background: var(--color-surface-warm); padding: 0.75rem 1rem; border-radius: 4px; font-size: 0.85rem;">
+              <strong>Material:</strong> ${p.material}
+            </div>
+            <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+              <button type="button" class="btn btn-primary" style="flex: 1;" onclick="addToCart('${p.id}', 1); closeQuickView();">Add to Cart</button>
+              <button type="button" class="btn btn-secondary" onclick="closeQuickView(); openPdpWith('${p.id}');">Full Details &rarr;</button>
+            </div>
+          </div>
+        </div>
+      `;
+      modal.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeQuickView = function() {
+      const modal = document.querySelector('.quickview-modal');
+      if (modal) modal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    };
+
+    // Predictive Search Live
+    document.getElementById('preview-search-input').addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      const res = document.getElementById('preview-search-results');
+      if (!q) {
+        res.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--color-text-muted);"><p>Type to search...</p></div>';
+        return;
+      }
+      const matches = sampleProducts.filter(p => p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.material.toLowerCase().includes(q));
+      if (matches.length === 0) {
+        res.innerHTML = `
+          <div style="text-align: center; padding: 2.5rem 1.5rem;">
+            <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.5rem;">No products found</h4>
+            <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Try another search or explore our collections.</p>
+            <button type="button" class="btn btn-secondary" onclick="closeSearchModal(); switchView('shop');">Explore All Collections</button>
+          </div>
+        `;
+      } else {
+        res.innerHTML = `
+          <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--color-text-light); margin-bottom: 1rem;">Matches (${matches.length})</div>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            ${matches.map(m => `
+              <div onclick="closeSearchModal(); openPdpWith('${m.id}')" style="display: flex; align-items: center; gap: 1rem; padding: 0.5rem; border-radius: 4px; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='var(--color-surface-warm)'" onmouseout="this.style.background='transparent'">
+                <img src="${m.image}" alt="${m.title}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 2px;">
+                <div style="flex: 1;">
+                  <div style="font-family: var(--font-heading); font-size: 1.05rem;">${m.title}</div>
+                  <div style="font-size: 0.82rem; font-weight: 600; color: var(--color-accent);">Rs. ${m.price.toLocaleString()}</div>
+                </div>
+                <span style="font-size: 0.8rem; color: var(--color-text-light);">&rarr;</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+    });
+
+    // Modals Controls
+    window.openCartDrawer = function() {
+      document.querySelector('.cart-drawer').classList.add('is-open');
+      document.querySelector('.cart-drawer-overlay').classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    };
+    window.closeCartDrawer = function() {
+      document.querySelector('.cart-drawer').classList.remove('is-open');
+      document.querySelector('.cart-drawer-overlay').classList.remove('is-active');
+      document.body.style.overflow = '';
+    };
+
+    window.openSearchModal = function() {
+      document.querySelector('.search-modal').classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('preview-search-input').focus(), 150);
+    };
+    window.closeSearchModal = function() {
+      document.querySelector('.search-modal').classList.remove('is-active');
+      document.body.style.overflow = '';
+    };
+
+    window.openWishlistModal = function() {
+      document.querySelector('.wishlist-modal').classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+      updateWishlistUi();
+    };
+    window.closeWishlistModal = function() {
+      document.querySelector('.wishlist-modal').classList.remove('is-active');
+      document.body.style.overflow = '';
+    };
+
+    window.openMobileNav = function() {
+      document.querySelector('.mobile-nav-drawer').classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    };
+    window.closeMobileNav = function() {
+      document.querySelector('.mobile-nav-drawer').classList.remove('is-active');
+      document.body.style.overflow = '';
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      populateAllGrids();
+      updateCartUi();
+      updateWishlistUi();
+    });
+  </script>
+
+  <!-- Load Assets Scripts -->
+  <script src="../assets/theme.js"></script>
+  <script src="../assets/wishlist.js"></script>
+  <script src="../assets/product-gallery.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+{%- liquid
+  assign collection = section.settings.collection
+  assign limit = section.settings.products_to_show | default: 4
+-%}
+
+<section class="section-spacing" style="background-color: var(--color-bg);" aria-label="Home Decor">
+  <div class="container">
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; margin-bottom: clamp(2rem, 4vw, 3.5rem); gap: 1rem;">
+      <div>
+        <span class="section-eyebrow">{{ section.settings.eyebrow | default: 'Finishing Touches' }}</span>
+        <h2 class="section-title">{{ section.settings.heading | default: 'Artisanal Home Decor' }}</h2>
+        <p style="color: var(--color-text-muted); font-size: 1rem;">
+          {{ section.settings.subheading | default: 'Mirrors, wall art, ceramic vases, sculptures, and architectural accents to elevate every corner.' }}
+        </p>
+      </div>
+      <a href="{{ section.settings.link | default: '/collections/home-decor' }}" class="btn btn-primary">
+        {{ section.settings.cta_text | default: 'Shop Home Decor' }}
+      </a>
+    </div>
+
+    <div class="editorial-subcategories" style="margin-top: 0; margin-bottom: 2.5rem;">
+      <a href="/collections/mirrors" class="editorial-subcat-pill">Mirrors</a>
+      <a href="/collections/wall-art" class="editorial-subcat-pill">Wall Art</a>
+      <a href="/collections/vases" class="editorial-subcat-pill">Vases</a>
+      <a href="/collections/decorative-objects" class="editorial-subcat-pill">Decorative Objects</a>
+      <a href="/collections/clocks" class="editorial-subcat-pill">Clocks</a>
+      <a href="/collections/photo-frames" class="editorial-subcat-pill">Photo Frames</a>
+      <a href="/collections/artificial-plants" class="editorial-subcat-pill">Artificial Plants</a>
+      <a href="/collections/sculptures" class="editorial-subcat-pill">Sculptures</a>
+      <a href="/collections/showpieces" class="editorial-subcat-pill">Showpieces</a>
+    </div>
+
+    <div class="product-grid">
+      {%- if collection != blank and collection.products.size > 0 -%}
+        {%- for product in collection.products limit: limit -%}
+          {% render 'product-card', product_card_product: product %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..limit) -%}
+          <div class="product-card">
+            <div class="product-card-image-wrap">
+              {{ 'collection-' | append: i | placeholder_svg_tag: 'product-card-img primary-img' }}
+            </div>
+            <div class="product-card-info">
+              <div class="product-card-vendor">Caperino Decor</div>
+              <h3 class="product-card-title">Decorative Item {{ i }}</h3>
+              <div class="product-card-price-wrap">
+                <span class="price-regular">Shopify Collection Demo</span>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home Decor Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow tag",
+      "default": "Finishing Touches"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Artisanal Home Decor"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Mirrors, wall art, ceramic vases, sculptures, and architectural accents to elevate every corner."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Shop Home Decor"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Decor Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 8,
+      "step": 4,
+      "default": 4,
+      "label": "Products to show"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Decor Section"
+    }
+  ]
+}
+{% endschema %}

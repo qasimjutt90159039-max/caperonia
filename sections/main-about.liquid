@@ -1,0 +1,73 @@
+<section class="section-spacing" aria-label="About Caperino Furnitures & Interiors">
+  <div class="container container-narrow">
+    <div class="section-header text-center" style="margin-bottom: 3.5rem;">
+      <span class="section-eyebrow">Our Story</span>
+      <h1 class="section-title">About Caperino Furnitures &amp; Interiors</h1>
+    </div>
+
+    <div style="aspect-ratio: 16/9; overflow: hidden; border-radius: 4px; margin-bottom: 3rem; background: var(--color-surface-warm);">
+      {%- if section.settings.image != blank -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 1400 }}"
+          alt="Caperino Furnitures & Interiors"
+          loading="lazy"
+          style="width: 100%; height: 100%; object-fit: cover;"
+        >
+      {%- else -%}
+        <img
+          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=80"
+          alt="Caperino Furnitures & Interiors Showroom"
+          loading="lazy"
+          style="width: 100%; height: 100%; object-fit: cover;"
+        >
+      {%- endif -%}
+    </div>
+
+    <div class="rte" style="font-size: 1.12rem; line-height: 1.8; color: var(--color-text-main);">
+      <p style="font-size: 1.25rem; font-family: var(--font-heading); color: var(--color-text-main); margin-bottom: 1.5rem; line-height: 1.5;">
+        <strong>Caperino Furnitures &amp; Interiors</strong> is a furniture and interior-focused business based in Multan, offering customers a convenient way to explore furniture and interior products online.
+      </p>
+
+      <p style="margin-bottom: 1.5rem; color: var(--color-text-muted);">
+        Located on Main Vehari Road near Chungi No. 22 in the Multan Timber Market, our business focuses on quality woodwork, functional living pieces, refined dining sets, comfortable bedroom furniture, and architectural interior products.
+      </p>
+
+      <h2 style="font-size: 1.75rem; margin-top: 2.5rem; margin-bottom: 1rem;">Furniture &amp; Interior Focus</h2>
+      <p style="margin-bottom: 1.5rem; color: var(--color-text-muted);">
+        Every home has unique spatial needs. Our online store is designed to make browsing furniture, comparing dimensions, viewing materials, and selecting finishes clear and effortless.
+      </p>
+
+      <div style="background: var(--color-surface-warm); padding: 2rem; border-radius: 4px; margin: 2.5rem 0; border-left: 3px solid var(--color-accent);">
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Showroom &amp; Contact Information</h3>
+        <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--color-text-main);">
+          <strong>Location:</strong> Main Vehari Road, near Chungi No. 22, Timber Market, Multan, Punjab, Pakistan
+        </p>
+        <p style="margin-bottom: 0; font-size: 0.95rem; color: var(--color-text-main);">
+          <strong>Telephone:</strong> <a href="tel:+923009630392" style="color: var(--color-accent); font-weight: 600;">+92 300 9630392</a>
+        </p>
+      </div>
+
+      <p style="margin-bottom: 2rem; color: var(--color-text-muted);">
+        Customers can place orders securely online through Shopify checkout or get in touch directly with our team to inquire about specific pieces, finishes, or custom dimensions.
+      </p>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="/collections/all" class="btn btn-primary" style="margin-right: 0.75rem;">Explore Furniture</a>
+        <a href="/pages/contact" class="btn btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Page",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Showroom Image"
+    }
+  ]
+}
+{% endschema %}
